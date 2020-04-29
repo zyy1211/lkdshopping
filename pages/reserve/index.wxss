@@ -1,0 +1,21 @@
+/* pages/reserve/index.wxss */
+.reserve{
+  width:730rpx;
+  height: 360rpx;
+  margin:0rpx auto;
+}
+.reserve image{
+  width:100%;
+  height: 100%;
+}
+.first{
+  margin-top:20rpx;
+}
+.last{
+  margin-bottom: 15rpx;
+}
+
+/* 模态框 */
+.mask{
+  top: 0;
+}

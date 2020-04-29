@@ -1,0 +1,12 @@
+<view class='con'>
+  <view class="ball-box whiteBackgound">
+    <view class='detail flexAlign'>
+      <block wx:for='{{lists}}' wx:key='index'>
+        <view class='list flexColumnCenter' data-id='{{item.id}}' data-catename='{{item.catename}}' bindtap='toReserveCenter'>
+          <image class='icon' src='{{static+item.img}}' />
+          <view class='sportName font-color-rgbaTwo'>{{item.catename}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

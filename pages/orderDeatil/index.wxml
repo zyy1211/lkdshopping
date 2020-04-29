@@ -1,0 +1,90 @@
+<view class='con'>
+  <!-- 收货人信息 -->
+  <view class='user boxModel font-color-rgbaTwo whiteBackgound'>
+    <view class='userName'>
+      <view >{{address.name}}</view>
+      <view class='tel'>{{address.phone}}</view>
+    </view>
+    <view class='detailAddr'>{{address.province_name}} {{address.city_name}} {{address.region_name}} {{address.detail}}</view>
+  </view>
+  <!-- 商品列表 -->
+  <view class='proLists'>
+    <view class='proInfo boxModel whiteBackgound'>
+      <view class="pro-title flexBetween borderBottomRgba">
+        <view class="goods-title font-color-rgbaTwo">商品列表</view>
+        <view class="pro-state">{{order.status.text}}</view>
+      </view>
+      <view class="pro-order flexBetween font-color-rgba">
+        <view class="font-color-rgba">订单号：{{order.order_no}}</view>
+        <view class="order-time">{{order.status.time}}</view>
+      </view>
+      <block wx:for='{{goods}}' wx:key='index'>
+        <view class="pro-img-count boxModel flexBetween font-color-rgbaTwo" data-order_id="{{item.order_id}}" >
+          <view class="pro-imgBox boxModel overHide font-color-rgba">
+            <image class="pro-img" src="{{static+item.save_path+item.file_name}}" />
+          </view>
+          <view class="goods-info boxModel flexColJustAround">
+            <view class="goods-title font-color-rgbaTwo">
+              <block wx:if='{{order.type == "1"}}'><text class="totalPri">[积]</text></block>
+              {{item.goods_name}}
+            </view>
+            <view class="goods-fontSize flexBetween font-color-rgba">
+              <view class="attr">{{item.goods_attr}}</view>
+              <view>x {{item.total_num}}</view>
+            </view>
+            <view class="flexBetween">
+              <view wx:if='{{order.type == "1"}}' class="totalPri">{{item.goods_price}} 积分</view>
+              <view wx:else class="totalPri">¥ {{item.goods_price}}</view>
+              <block wx:if="{{ order.status.text == '待评价' }}">
+                <view class="pj flexCenter totalPri" data-goods="{{item}}" bindtap="toCommodityEvaluation">去评价</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="finally flexBetween font-color-rgba">
+        <view wx:if='{{order.type == "1"}}'>共计{{order.total_num}}件商品，合计： {{order.total_price}} 积分</view>
+        <view wx:else >共计{{order.total_num}}件商品，合计： ¥ {{order.total_price}}</view>
+        <view wx:if='{{order.status.receipt}}' class="confirm-receive boxModel flexCenter" data-order_id="{{item.order_id}}" bindtap="toSeeLogistics">
+          查看物流
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 订单金额 -->
+  <view class="orderInfo boxModel whiteBackgound">
+    <view wx:if='{{order.type == "1"}}' class="order-title font-color-rgbaTwo">所需积分</view>
+    <view wx:else class="order-title font-color-rgbaTwo">订单金额</view>
+    <view class="orderFee boxModel font-color-rgba flexColJustAround borderMiddleTopRgba">
+      <view wx:if='{{order.type == "1"}}' class="flexJustBetw">
+        <text>商品积分：</text>
+        <text class="totalPri">{{order.total_price}} 积分</text>
+      </view>
+      <view wx:else class="flexJustBetw">
+        <text>商品金额：</text>
+        <text class="totalPri">¥ {{order.total_price}}</text>
+      </view>
+      <view class="flexJustBetw" wx:if='{{order.type == "0"}}'><text>配送费用：</text><text class="totalPri">+ ¥ {{order.express_price}}</text></view>
+      <view class="flexJustBetw" wx:if='{{order.type == "0"}}'><text>应付金额：</text><text class="totalPri">¥ {{order.pay_price}}</text></view>
+    </view>
+  </view>
+  <block wx:if='{{order.status.value}}'>
+    <view class="fix boxModel borderMiddleTopRgba whiteBackgound bottomFixed">
+      <view class="com flexCenter" bindtap="cancleOrder">取消订单</view>
+      <view wx:if='{{order.type == "1"}}' class="com isActive flexCenter" bindtap="toExchange">去兑换</view>
+      <view wx:else class="com isActive flexCenter" bindtap="toPay">去付款</view>
+    </view>
+  </block>
+  <block wx:elif='{{order.status.receipt}}'>
+    <view class="fix boxModel borderMiddleTopRgba whiteBackgound bottomFixed">
+      <view class="com flexCenter"></view>
+      <view class="com isActive flexCenter" bindtap="received">确认收货</view>
+    </view>
+  </block>
+  <block wx:elif='{{order.status.delete}}'>
+    <view class="fix boxModel borderMiddleTopRgba whiteBackgound bottomFixed">
+      <view class="com flexCenter"></view>
+      <view class="com isActive flexCenter" bindtap="deleOrder">删除订单</view>
+    </view>
+  </block>
+</view>

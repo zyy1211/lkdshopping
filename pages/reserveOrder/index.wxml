@@ -1,0 +1,78 @@
+<view class='con'>
+  <view class="order borderMiddleTopRgba whiteBackgound boxModel">
+    <view class="order-title font-color-rgba">{{arr.store.store_name}}</view>
+    <view class="order-date flexAlign">
+      <image src="/images/reserve3.png" />
+      <text>{{arr.date}}</text>
+    </view>
+    <!-- 预约列表 -->
+    <view>
+      <block wx:if='{{drawMenu}}'>
+        <block wx:if='{{userInfo.rsortid != "1"}}'>
+          <view wx:if='{{userInfo.rsortid == "3"}}' class="orderList boxModel">
+            教练名称：{{orderLists}}  课程费用：￥{{arr.all_price}}
+          </view>
+          <view wx:else class="orderList boxModel">
+            {{orderLists}} ￥{{arr.all_price}}
+          </view>
+        </block>
+        <block wx:elif='{{userInfo.rsortid == "1"}}' >
+          <block wx:for='{{orderLists}}' wx:key='index'>
+            <view class="orderList boxModel">
+              {{item.type}} {{item.sequence}} {{item.times}} ￥{{item.price}}
+            </view>
+          </block>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="orderList boxModel">
+          {{orderLists[0].type}} {{orderLists[0].sequence}} {{orderLists[0].times}} ￥{{orderLists[0].price}}
+        </view>
+      </block>
+    </view>
+    <block wx:if='{{ userInfo.rsortid == "1" && orderLists.length > 1 }}'>
+      <view class="all font-color-rgbaThr" bindtap="drawMenu">打开/收起全部{{orderLists.length}}个场次</view>
+    </block>
+  </view>
+  <!-- 费用结算 -->
+  <block wx:if='{{userInfo.rsortid != "4"}}'>
+    <view class="fee flexColJustAround whiteBackgound boxModel">
+      <view class="jf flexBetween">
+        <view>
+          <view>积分 <text class="ablePoints font-color-rgbaThr">(总积分{{arr.points}})</text></view>
+          <view class="ablePri font-color-rgbaThr">可使用 {{arr.minus_points}} 积分抵扣 <text class="color">{{arr.points_price}}元</text>费用</view>
+        </view>
+        <switch style='zoom:.8;' checked='{{arr.isPoints}}' bindchange='switchChange'></switch>
+      </view>
+      <view class="fee-account font-color-rgbaThr">费用结算</view>
+      <view class="fee-account flexJustBetw font-color-rgbaTwo">
+        <view wx:if='{{userInfo.rsortid != "3"}}'>场地费</view>
+        <view wx:else>课程费</view>
+        <view class="color">￥ {{arr.all_price}}</view>
+      </view>
+      <block wx:if='{{ isCheck }}'>
+        <view class="fee-account flexJustBetw font-color-rgbaTwo">
+          <view>积分抵扣</view>
+          <view class="color">-￥ {{arr.points_price}}</view>
+        </view>
+      </block>
+      <view class="payFont flexAlign flexJustBetw borderMiddleTopRgba">
+        <view>实付款</view>
+        <view class="color">￥ {{ isCheck ? arr.pay_price : arr.all_price}}</view>
+      </view>
+    </view>
+  </block>
+  <!-- 底部固定栏 -->
+  <view class="fix boxModel color whiteBackgound borderMiddleTopRgba bottomFixed">
+    <view class="price flexAlign">
+      <view wx:if='{{userInfo.rsortid != "4"}}'>
+        实付：<text class="symbol">￥</text> 
+        <text class="payPrice">{{ isCheck ? arr.pay_price : arr.all_price}}</text>
+        <text class="symbol"> 可得{{ isCheck ? arr.get_points : arr.get_points2}}积分</text>
+      </view>
+    </view>
+    <view class="pay flexCenter whiteFont {{isClick ? 'ban' : ''}}" bindtap="toAreaDetail" bindtap="toPay">
+      {{userInfo.rsortid != "4" ? '立即支付' : '免费预约'}}
+    </view>
+  </view>
+</view>

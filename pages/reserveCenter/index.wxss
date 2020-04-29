@@ -1,0 +1,66 @@
+.listContainer{
+  width: 750rpx;
+  height: 300rpx;
+  padding: 25rpx;
+  margin-bottom:2rpx;
+}
+.preImg{
+  width: 270rpx;
+  height: 218rpx;
+}
+.preImg image{
+  width: 100%;
+  height: 100%;
+}
+.place{
+  width: 385rpx;
+  height: 237rpx;
+  padding-top: 10rpx;
+}
+.placeName,.starImg,.yd,.bott{
+  width:100%;
+  height: 50rpx;
+}
+.placeName{
+  font-size:33rpx;
+}
+.starImg image{
+  width:35rpx;
+  height: 34rpx;
+  margin-right: 15rpx;
+}
+.yd,.ball{
+  font-size:24rpx;
+  color:rgba(153,153,153,1);
+}
+.yd image{
+  width:31rpx;
+  height: 31rpx;
+  margin-right: 25rpx;
+}
+.pri{
+  color:orange;
+}
+.ball,.distance{
+  width:50%;
+}
+.distance image{
+  width:26rpx;
+  height: 37rpx;
+  position: relative;
+  left:-10rpx;
+  z-index: 0;
+}
+.distance{
+  font-size:24rpx;
+  justify-content: flex-end;
+}
+/* 暂无数据 */
+.nodata{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left:0;
+  top: 100rpx;
+  z-index: 0;
+}

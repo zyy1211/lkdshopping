@@ -1,0 +1,98 @@
+<view class="con {{drawMenu ? 'topFixed' : ''}}">
+  <!-- 顶部搜索框 -->
+  <view class='search boxModel flexAlign whiteBackgound'>
+    <input type='text'
+      class='input-search boxModel ' 
+      placeholder='请输入搜索的商品' 
+      placeholder-class='placeholder'
+      adjust-position='true'
+      bindinput='keySearch'
+      value='{{key}}'
+    />
+    <view class='search-btn borderRgba font-color-rgba flexCenter' data-type="0" bindtap="searchKey">搜商品</view>
+    <view class='search-btn borderRgba font-color-rgba flexCenter' data-type="1" bindtap="searchKey">搜商家</view>
+  </view>
+  <!-- 导航栏 -->
+  <block wx:if="{{flag}}">
+    <view class='whiteBackgound select_box flexAround font-color-rgbaTwo' style='margin-top:0;'>
+      <block wx:for='{{navTitle}}' wx:key='index'>
+        <view class='select flexCenter' data-index="{{index}}" over-stop-propagation='true' catchtap='navTap'>
+          <text class='select_text {{index == tapIndex ? "isActive" : ""}}'>{{item}}</text>
+          <block wx:if="{{ index == '0' }}">
+            <image class="words_img {{ drawMenu ? 'activeRotate' : '' }}" src='/images/1.png' />
+          </block>
+          <block wx:if="{{ index == '4' }}">
+            <image class="words_img {{ jgRotate ? 'activeRotate' : '' }}" src='/images/1.png' />
+          </block>
+        </view>
+      </block>
+      <view class='mask' wx:if="{{drawMenu}}">
+        <view class='option_box'>
+          <view class='option boxModel' wx:for='{{goryLists}}' wx:key='index' 
+            data-category_id='{{item.category_id}}' data-category_name='{{item.name}}' over-stop-propagation='true' catchtap='tapCate'>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if='{{isShow}}'>
+    <!-- 搜商品 -->
+    <block wx:if="{{flag}}">
+      <view class='list boxModel whiteBackgound'>
+        <view class='list-ul flexJustBetw'>
+          <block wx:for='{{img}}' wx:key='index' >
+            <view class='list-li' data-goods_id='{{item.goods_id}}' bindtap='toProDetail'>
+              <view class='img' >
+                <image src='{{static+item.save_path+item.file_name}}' ></image>
+              </view>
+              <view class='list-li-1'>
+                <view class='name overHide'>
+                  <block wx:if='{{item.type == "1"}}'><text class="isActive">[积]</text></block>
+                  {{item.goods_name}}
+                </view>
+                <view class='list-li-2 flexJustBetw'>
+                  <view wx:if='{{item.type == "1"}}' class='list-li-3'>{{item.goods_price}}积分</view>
+                  <view wx:else class='list-li-3'>￥{{item.goods_price}}</view>
+                  <view class='list-li-4 font-color-rgba flexAlign'>
+                    <image class='rdImg' src='/images/redu.png'></image>
+                    热度: {{item.goods_hot}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+    <!-- 搜商家 -->
+    <block wx:else>
+      <view class="list boxModel">
+        <block wx:for="{{busLists}}" wx:key='index' >
+          <view class="listLi boxModel whiteBackgound">
+            <view class="li-title flexBetween boxModel">
+              <view class="li-left flexAlign">
+                <view class="li-avatar borderRadius overHide"><image src="{{item.logo}}" /></view>
+                <view class="li-storeName">{{item.store_name}}</view>
+              </view>
+              <view class="li-btn flexCenter" data-store_id="{{item.store_id}}" bindtap="toBusinessDetail">详情</view>
+            </view>
+            <view class="li-imgs boxModel">
+              <block wx:for='{{item.goods}}' wx:for-item='list' wx:for-index='idx' wx:key='idx' >
+                <view class="li-img overHide" data-goods_id='{{list.goods_id}}' bindtap="toReserveDetail">
+                  <image src="{{static+list.img}}" />
+                </view>
+              </block>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png'></image>
+    </view>
+  </block>
+</view>

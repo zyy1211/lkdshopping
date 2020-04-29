@@ -1,0 +1,92 @@
+<!--pages/reserveCenter/index.wxml-->
+<view class='con'>
+  <view class='whiteBackgound select_box font-color-rgbaTwo flexAround'>
+    <!-- 全部区域 -->
+    <view class='select flexCenter' catchtap='qyShow'>
+      <!-- 下拉显示框 -->
+      <text class='select_text'>{{allArea}}</text>
+      <image class='words_img {{ qy_drawMenu ? "activeRotate" : "" }}' src='/images/1.png' />
+      <view class='mask' wx:if='{{qy_drawMenu}}'>
+        <view class='option_box'>
+          <view class='option boxModel' data-area-id='0' data-name='全部' bindtap='qyTap'>
+            全部
+          </view>
+          <view class='option boxModel' wx:for='{{qyList}}' wx:key='index' data-area-id='{{item.areaid}}' data-name='{{item.name}}' bindtap='qyTap'>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 羽毛球 -->
+    <view class='select flexCenter' catchtap='ymShow'>
+      <text class='select_text'>{{catename}}</text>
+      <image class='words_img {{ ym_drawMenu ? "activeRotate" : "" }}' src='/images/1.png' />
+      <view class='mask' wx:if='{{ym_drawMenu}}'>
+        <view class='option_box'>
+          <view class='option boxModel' data-cate-id='' data-name='全部' bindtap='ymTap'>
+            全部
+          </view>
+          <view class='option boxModel' wx:for='{{ymList}}' wx:key='index' data-cate-id='{{item.cateid}}' data-name='{{item.name}}' bindtap='ymTap'>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view> 
+
+    <!-- 离我最近 -->
+    <view class='select flexCenter' catchtap='lwShow'>
+      <text class='select_text'>{{others}}</text>
+      <image class='words_img {{ lw_drawMenu ? "activeRotate" : "" }}' src='/images/1.png' />
+      <view class='mask'wx:if='{{lw_drawMenu}}'>
+        <view class='option_box' >
+          <view class='option boxModel' wx:for='{{lwList}}' wx:key='index' data-other-id='{{item.otherid}}' data-name='{{item.name}}' bindtap='lwTap'>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 预约列表 -->
+  <view wx:if='{{isShow}}'>
+    <block wx:for='{{yuList}}' wx:key='index'>
+      <view class='listContainer flexBetween boxModel whiteBackgound' data-title='{{item.title}}' data-id="{{item.id}}" bindtap='toReserveDetail'>
+        <view class='preImg boxModel'>
+          <image wx:if='{{rsortid == "3"}}' src='{{item.img}}' />
+          <image wx:else src='{{httpImg + item.img}}' />
+        </view>
+        <view class='place boxModel'>
+          <view class='placeName flexAlign font-color-rgbaTwo'>{{item.title}}</view>
+          <view class='starImg flexAlign'>
+            <image src='/images/star{{item.points >= 1 ? 2 : 1}}.png' />
+            <image src='/images/star{{item.points >= 2 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 3 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 4 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 5 ? 2 : 1}}.png' /> 
+          </view>
+          <view class='yd flexAlign'>
+            <block wx:if='{{rsortid != "4" && item.price != "0.00"}}'>
+              <image src='/images/money.png' />
+              预定<text class='pri'>{{item.price}}</text>元起
+            </block>
+          </view>
+          <view class='bott flexBetween'>
+            <view class='ball flexAlign'>
+              <text>{{item.tags}}</text>
+            </view>
+            <view class='distance flexAlign'>
+              <image src='/images/map.png' />
+              <text>{{item.juli}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,154 @@
+.address{
+  width: 100%;
+  height: 120rpx;
+  padding: 0 25rpx;
+  margin-top: 50rpx;
+}
+.arrow{
+  width: 60rpx;
+  height: 100%;
+}
+.arrowImg{
+  width:16rpx;
+  height: 28rpx;
+}
+.map-img{
+  width:70rpx;
+}
+.map-img image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.user{
+  width:550rpx;
+  height: 100%;
+  display: flex;
+  font-size:30rpx;
+  flex-wrap: wrap;
+}
+.userName{
+  width:100%;
+  height: 50%;
+  display: flex;
+}
+.name{
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+}
+.tel{
+  margin-left:24rpx;
+  font-size:28rpx;
+}
+.detailAddr{
+  width:100%;
+  height: 50%;
+  font-size:26rpx;
+}
+.proLists{
+  width: 100%;
+  padding: 0 25rpx;
+}
+.proInfo{
+  width:700rpx;
+  height:284rpx;
+  box-shadow:0rpx 0rpx 20rpx 0rpx rgba(69,69,69,0.2);
+  border-radius:20rpx;
+  margin: 20rpx 0; 
+}
+.proImg{
+  width:207rpx;
+  height:207rpx;
+  margin-left:30rpx;
+  border-radius:10rpx;
+}
+.proImg image{
+  width:100%;
+  height: 100%;
+}
+.pro{
+  width:400rpx;
+  height: 100%;
+  margin-left:27rpx;
+}
+.proName{
+  height: 30%;
+  padding-top: 25rpx;
+  font-size:28rpx;
+}
+.proSize{
+  height: 30%;
+  font-size:26rpx;
+  padding-top: 55rpx;
+}
+.total{
+  height:20%;
+  padding-top: 5rpx;
+}
+.totalPri{
+  font-size:28rpx;
+  color:rgba(219,33,33,1);
+}
+.totalCount{
+  font-size:28rpx;
+  margin-right: 30rpx;
+}
+.others{
+  width:700rpx;
+  padding-bottom: 50rpx;
+  border-radius:20rpx;
+  margin:50rpx 0 140rpx 25rpx;
+}
+.list{
+  width:80%;
+  height: 90rpx;
+  margin:0 auto;
+  font-size:28rpx;
+  border-bottom: 1rpx solid rgba(245,245,245,1);
+}
+.buyer{
+  border:0;
+}
+.price{
+  color:rgba(219,33,33,1);
+}
+.textarea{
+  width:80%;
+  height:161rpx;
+  margin:0 auto;
+  font-size:28rpx;
+  padding:10rpx 20rpx;
+  border:1px solid rgba(229,229,229,1);
+  border-radius:10px;
+}
+.txt{
+  padding: 15rpx 20rpx;
+}
+.placeholder{
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+}
+.fix{
+  width:750rpx;
+  height: 100rpx;
+  font-size:26rpx;
+  display: flex;
+  z-index: 33;
+}
+.sumPri{
+  width: 50%;
+}
+.priColor{
+  color:#DB2121;
+}
+.calculate{
+  width:250rpx;
+  height: 70rpx;
+  border:1rpx solid rgba(56,219,248,1);
+  border-radius:35rpx;
+  font-size:30rpx;
+  color:#fff;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.ban{
+  pointer-events:none;
+}

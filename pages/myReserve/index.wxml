@@ -1,0 +1,87 @@
+<view class="con">
+  <!-- 头部下拉菜单 -->
+  <view class="navTab borderTopRgba whiteBackgound">
+    <view class="nav-title boxModel nav-border-right flexCenter" bindtap="drawCate">
+      <text>{{cate}}</text>
+      <image class="arrow" src="/images/1.png" />
+      <view class='mask' wx:if='{{isDrawCate}}'>
+        <view class='option_box'>
+          <view class='option boxModel' wx:for='{{tabCate}}' wx:key='index' data-index='{{index}}' catchtap='tapCate'>
+            {{item.text}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="nav-title boxModel flexCenter" bindtap="drawState">
+      <text>{{state}}</text>
+      <image class="arrow" src="/images/1.png" />
+      <view class='mask' wx:if='{{isDrawState}}'>
+        <view class='option_box'>
+          <view class='option boxModel' wx:for='{{tabState}}' wx:key='index' data-index='{{index}}' catchtap='tapState'>
+            {{item.text}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 预约信息 -->
+  <block wx:if='{{isShow}}'>
+    <view class="orderLists">
+      <block wx:for="{{reserveLists}}" wx:key='index'>
+        <view class="order-list whiteBackgound">
+          <view 
+            class="order-title boxModel flexBetween font-color-rgbaThr borderMiddleBottomRgba" 
+            data-res_id="{{item.res_id}}"
+            data-rsortid="{{item.rsortid}}"
+            bindtap="toDetail" 
+          >
+            <text>{{item.title}}</text>
+            <image class="title-img" src="/images/arrow-right.png" />
+          </view>
+          <view class="order-info boxModel borderMiddleBottomRgba" data-order_id="{{item.order_id}}" bindtap="toAreaDetail">
+            <view class="order-img"><image src="{{static+item.img}}" /></view>
+            <view class="info">
+              <view class="info-title overHide">
+                <block wx:if='{{item.rsortid == "1"}}'>场地预定 </block>
+                <block wx:elif='{{item.rsortid == "2" || item.rsortid == "4"}}'>课程预约 </block>
+                <block wx:elif='{{item.rsortid == "3"}}'>教练预约 </block>
+                <text class="chart" wx:if='{{item.rsortid == "1"}}'> . </text>
+                <block wx:if='{{item.rsortid == "1"}}'> {{item.sequence}}</block>
+              </view>
+              <view class="info-date font-color-rgbaThr">
+                <block wx:if='{{item.rsortid == "1"}}'>
+                  {{item.years}}/{{item.dates}}  {{item.times}}
+                </block>
+                <block wx:if='{{item.rsortid != "1"}}'>
+                  <view>上课时间：</view>
+                  <view class="list-date">
+                    {{item.years}}/{{item.dates}} {{item.times}} {{item.weeks}}
+                  </view>
+                </block>
+              </view>
+              <view wx:if='{{ item.rsortid == "1" }}' class="info-date font-color-rgbaThr">查看更多</view>
+            </view>
+          </view>
+          <view class="order-state">
+            <view class="state flexAlign boxModel">
+              <block wx:if='{{item.status.value == 0}}'><image class="state-img" src="/images/cancel.png" /></block>
+              <block wx:elif='{{item.status.value == 1}}'><image class="state-img" src="/images/paying.png" /></block>
+              <block wx:elif='{{item.status.value == 2}}'><image class="state-img" src="/images/paid.png" /></block>
+              <block wx:elif='{{item.status.value == 4}}'><image class="state-img" src="/images/success.png" /></block>
+              <text>{{item.status.text}}</text>
+            </view>
+            <block wx:if='{{item.status.value == 1}}'>
+              <view class="pay whiteFont flexCenter" data-order_id="{{item.order_id}}" bindtap="pay">继续支付</view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,21 @@
+.ball-box{
+  width: 100%;
+}
+.detail{
+  width:690rpx;
+  margin: 0 auto;
+  padding: 25rpx 0;
+  flex-flow: wrap;
+}
+.list{
+  width:25%;
+  height: 180rpx;
+}
+.icon{
+  width:91rpx;
+  height: 91rpx;
+}
+.sportName{
+  font-size:24rpx;
+  line-height:44rpx;
+}

@@ -1,0 +1,42 @@
+<view class="con">
+  <view class='header textAlign whiteFont'>
+    <view class='everyDay-sign'>每日签到</view>
+    <view class='jilu flexCenter'>
+      <image class='jl-img' src='/images/sign1.png' />
+      <view class='jl-txt'>已累计签到 {{count.all_count_days}} 天</view>
+    </view>
+  </view>
+  
+  <!-- 签到 -->
+  <view class="signBox boxModel whiteBackgound">
+    <view class="signOptions flexJustAround">
+      <block wx:for='{{signOptions}}' wx:key='index'>
+        <view class="signOption flexColBetwCenter font-color-rgbaThr">
+          <text>{{item.whichDay}}</text>
+          <image class="signImg" src="{{item.signImg}}" />
+          <text class="{{ item.isLight ? 'isOrange' : '' }}">{{item.points}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="sign {{ count.isSign ? 'isbackground' : 'isActive' }} flexCenter whiteFont" bindtap="sign">
+      {{ count.isSign ? '立即签到' : '今天已签到' }}
+    </view>
+  </view>
+  <!-- 签到列表 -->
+  <view class="signLists boxModel whiteBackgound">
+    <block wx:if="{{signLists != '' }}">
+      <block wx:for='{{signLists}}' wx:key='index'>
+        <view class="list boxModel flexJustBetw borderMiddleBottomRgba">
+          <view class="sign-time boxModel">
+            <view class="font-sign flexColAlignStart font-color-rgbaTwo">签到</view>
+            <view class="s-time flexAlign font-color-rgbaThr">{{item.time}}</view>
+          </view>
+          <view class="points flexColAlignEnd">+{{item.points}}</view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class="soonSign flexCenter font-color-rgbaThr">您尚未签到过,快点签到领取积分吧</view>
+    </block>
+  </view>
+</view>

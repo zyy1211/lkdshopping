@@ -1,0 +1,22 @@
+<view class="con">
+  <!-- 记录列表 -->
+  <block wx:if='{{isShow}}'>
+    <view class="recordCom">
+      <block wx:for="{{recordLists}}" wx:key="index">
+        <view class="record-list boxModel borderMiddleBottomRgba whiteBackgound">
+          <view class="font-method flexJustBetw">
+            <view>{{item.type.text}}</view>
+            <view>{{item.type.tag+item.points}}</view>
+          </view>
+          <view class="font-time font-color-rgba">{{item.time}}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

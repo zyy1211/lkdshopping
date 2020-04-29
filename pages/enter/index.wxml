@@ -1,0 +1,12 @@
+<view class="con topFixed flexAlign">
+  <view class="con-box">
+    <view class='store flexAround whiteBackgound' wx:if="{{store == '0'}}">
+      <image src='/images/styleStore.png'/>
+      <view class='ruzhu textAlign' hover-class='yes' bindtap='toBecomeBusinesses'>入驻成为商家</view>
+    </view>
+    <view class='store flexAround whiteBackgound' wx:if="{{coach == '0'}}">
+      <image src='/images/coach.png'/>
+      <view class='ruzhu textAlign' hover-class='yes' bindtap='toBecomeCoach'>入驻成为教练</view>
+    </view>
+  </view>
+</view>

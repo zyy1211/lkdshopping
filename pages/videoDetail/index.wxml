@@ -1,0 +1,85 @@
+<view class='con'>
+  <!-- 视频播放 -->
+  <view class='vd'>
+    <video 
+      src='{{videoHttps+videoLink}}'
+      custom-cache='{{false}}'
+      controls='{{true}}'
+      show-mute-btn
+      show-center-play-btn
+      play-btn-position='center'
+    >
+    </video>
+  </view>
+  <view class='me boxModel whiteBackgound'>
+    <view class='user font-color-rgba'>
+      <view class='avator borderRadius overHide'>
+        <image src='{{avatorSrc}}'></image>
+      </view>
+      <text class='userName'>{{userName}}</text>
+      <view class='gz whiteFont textAlign {{ isFollow ? "gz-bgColor" : "" }}' bindtap='gz'>
+        <block wx:if='{{isFollow}}'>已关注</block>
+        <block wx:else>关注</block>
+      </view>
+    </view>
+    <view class='date flexBetween font-color-rgba'>
+      <view class='time-img flexAlign'>
+        <image src='/images/time1.png' />
+        <text class='time'>{{date}}</text>
+      </view>
+      <view class='zan flexAlign font-color-rgbaThr' bindtap='clickZan'>
+        <image class='zan-img' src='/images/zan{{isLike == 0 ? "1" : "2"}}.png' />
+        <text>{{lnum}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论区 -->
+  <view class='pl boxModel whiteBackgound'>
+    <view class='pl-title'>精彩评论</view>
+    <block wx:if='{{pLength}}'>
+      <block wx:for='{{plUserList}}' wx:key='index' >
+        <view class='pl-list boxModel borderBottomRgba'>
+          <view class='pl-user flexAlign'>
+            <view class='pl-tx borderRadius overHide'>
+              <image src='{{item.avatarurl}}' />
+            </view>
+            <view class='pl-userName font-color-rgba'>{{item.nickname}}</view>
+          </view>
+          <view class='pl-content'>{{item.content}}</view>
+        </view>
+        <view class=' whiteBackgound'></view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='pl-empty whiteBackgound'>
+        暂无评论
+      </view>
+    </block>
+  </view>
+  <!-- 底部固定栏 -->
+  <view class='fix bottomFixed flexAlign whiteBackgound'>
+    <image class='write' src='/images/write.png'></image>
+    <input class='input boxModel'
+     placeholder='写评论' 
+     maxlength='{{maxLength}}' 
+     placeholder-class='placeholder' 
+     bindinput='inputLen'
+     bindconfirm='send'
+     confirm-type='send'
+     value='{{userInput}}' 
+    />
+    <image class='send' src='/images/publish.png' bindtap='send'></image>
+  </view>
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel"><image src="/images/getphone.png" /></view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

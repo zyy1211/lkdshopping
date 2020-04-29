@@ -1,0 +1,96 @@
+<view class='con'>
+  <!-- 日期 -->
+  <view class="time topFixed whiteBackgound flexJustBetw">
+    <block wx:for='{{time}}' wx:key='{{idx}}'>
+      <view class="time-1 textAlign {{currentTab==index ? 'active' : ''}}" bindtap="Tap" data-week="{{item.week_value}}" data-idx="{{index}}" >
+        <text>{{item.date}}</text>
+        <text>{{item.week}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 中间内容 -->
+  <view class="content">
+    <view class="left-ul">
+      <view class="left-li flexJustBetw" wx:for="{{hour}}" wx:key='index'>
+        <text data-hour='{{item}}'>{{item}}</text>
+        <text>-</text>
+      </view>
+    </view>
+    <!-- 场次 -->
+    <scroll-view scroll-x class="session ">
+      <view class="session-ul ">
+        <block wx:for='{{session}}' wx:for-item='lists' wx:for-index='idx' wx:key='idx'>
+          <view class="session-li" >
+            <text>{{lists.sequence}}</text>
+            <block wx:for='{{lists.lists}}' wx:for-item='items' wx:key='index'>
+              <view 
+                class="session-li-1 boxModel whiteBackgound flexCenter {{items.isBlank ? 'isBlank' : (items.isReserv ? 'isCheck' : (!items.isChoose ? 'active1' : '' )) }}" 
+                data-x='{{lists.sequence}}'
+                data-y='{{items.price}}' 
+                data-year='{{lists.year}}'
+                data-idx='{{idx}}'
+                data-id="{{items.id}}"
+                data-idy='{{index}}'
+                data-flag='{{items.isChoose}}' 
+                bindtap="isClick"
+              >
+                <block wx:if='{{ items.isBlank }}' >
+                  <image class="isImg" src="/images/no.png" />
+                </block>
+                <block wx:else>
+                  <block wx:if='{{ items.isReserv }}' >
+                    <image class="isImg" src="/images/user.png" />
+                  </block>
+                  <block wx:else>￥{{items.price}}</block>
+                </block> 
+              </view>
+            </block> 
+          </view>
+        </block>  
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 选择区域 -->
+  <view class="selectL whiteBackgound bottomFixed">
+    <scroll-view class="select-ul boxModel textAlign" scroll-x="true">
+      <block wx:if='{{reLists.length != 0 }}'>
+        <block wx:for='{{reLists}}' wx:key='index'>
+          <view class="select-li boxModel"  >
+            <text class='Y flexCenter'>{{item.pre}}-{{item.next}}</text>
+            <text class='Y flexCenter'>{{item.hc}}</text>
+          </view>
+        </block> 
+      </block>  
+      <block wx:else>
+        <view class="yd textAlign">
+          <view class='rect boxModel isTrue'></view>
+          <view>已选择</view>
+        </view>
+        <view class="yd textAlign">
+          <view class='rect boxModel unKnow'></view>
+          <view>可预定</view>
+        </view>
+        <view class="yd textAlign">
+          <view class='rect boxModel saled'></view>
+          <view>已售完</view>
+        </view>
+      </block> 
+    </scroll-view>
+    <button class='btn {{reLists.length == 0 ? "" : "btnActive"}}' bindtap="submit">确定</button>
+  </view>
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel">
+          <image class="tel-bg" src="/images/getphone.png" />
+          <image class="tel-close-modialog" src="/images/cancel.png" bindtap="closeTelModia" />
+        </view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

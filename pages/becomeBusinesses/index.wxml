@@ -1,0 +1,75 @@
+<!--pages/becomeBusinesses/index.wxml-->
+<view class='whiteBackgound'>
+  <block wx:if='{{zt == "1"}}'>
+    <view class="coach boxModel whiteBackgound">
+      <view class="coach-avatar">
+        <view class="avatar overHide" data-type="1" bindtap="upload"><image src="{{imgUrl}}" /></view>
+        <view class="click-modify flexCenter">公司Logo</view>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit='true'>
+      <view class='businesses whiteBackgound boxModel flexColJustAround borderTopRgba'>
+        <view>公司全称</view>
+        <input type='text' class='input borderBottomRgba' name='name' value="{{info.cname}}" placeholder-class='placeholder' placeholder='请输入营业执照上的公司名称'/>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround'>
+        <view>公司简称</view>
+        <input type='text' class='input borderBottomRgba' name='abbr' value="{{info.store_name}}" placeholder-class='placeholder' placeholder='请输入公司简称（用于对外展示）'/>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view>联系人</view>
+        <input type='text' class='input borderBottomRgba' name='master' value="{{info.cmaster}}" placeholder-class='placeholder' placeholder='请输入联系人'/>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround borderBottomRgba'>
+        <view>联系电话</view>
+        <view class="relative flexBetween">
+          <input type='number' class='input' placeholder-class='placeholder' disabled="true" name='ctel' value="{{ctel}}" placeholder='请点击按钮获取手机号'/>
+          <button class="btn whiteFont" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击获取</button>
+        </view>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view>联系地址</view>
+        <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+          <input type='text' class='input borderBottomRgba' value="{{region}}" disabled placeholder-class='placeholder' placeholder='选择省、市、区'/>
+        </picker>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view>详细地址</view>
+        <input type='text' class='input borderBottomRgba' name='address' value="{{info.caddr}}" placeholder-class='placeholder' placeholder='请输入详细地址'/>
+      </view>
+      <!-- 营业执照 -->
+      <view class="business-picture boxModel flexCenter" data-type="2" bindtap="upload">
+        <view wx:if='{{flag}}' class="business-img font-color-rgba flexCenter">点击上传营业执照</view>
+        <view wx:else class="business-img boxModel"><image src="{{businessImg}}" /></view>
+      </view>
+      <!-- 提交 -->
+      <button class='submit whiteFont' form-type="submit">提  交</button>
+    </form>
+    <view class='others textAlign'>
+      <image src='/images/light.png' class='img'/>
+      <text>商家入驻成功后,可发布预约信息,商品信息等</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 审核 -->
+    <view class="examine boxModel">
+      <view wx:if='{{status.value == 0}}' class="examine-result flexCenter">
+        <icon type="success" size='30'/>
+      </view>
+      <view wx:elif='{{status.value == 3}}' class="examine-result flexCenter">
+        <icon type="warn" size='30'/>
+      </view>
+      <view wx:elif='{{status.value == 4}}' class="examine-result flexCenter">
+        <icon type="cancel" size='30'/>
+      </view>
+      <view class="examine-result flexCenter">{{status.text}}</view>
+      <view class="font" wx:if='{{status.value == 4}}'>
+        <view class="weight flexCenter">失败原因：</view>
+        <view class="note flexCenter">{{status.note}}</view>
+      </view>
+    </view>
+    <view class="flexCenter" wx:if='{{status.value == 4}}'>
+      <view class="submit whiteFont flexCenter" bindtap="resub">重新提交</view>
+    </view>
+  </block>
+</view>

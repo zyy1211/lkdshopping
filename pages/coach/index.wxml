@@ -1,0 +1,117 @@
+<view class='con boxModel'>
+  <view class="coach-info boxModel whiteBackgound">
+    <view class="head-bg boxModel flexColAlignEnd">
+      <view class="attention boxModel flexCenter font-color-rgba whiteBackgound" bindtap="attention">
+        {{coachInfo.isFollow ? '已关注' : '+关注'}}
+      </view>
+    </view>
+    <view class="info boxModel flexAlign">
+      <view class="info-avatar borderRadius overHide"><image src="{{coachInfo.avatarurl}}" /></view>
+      <view class="info-name flexColJustAround">
+        <view>{{coachInfo.nickname}}</view> 
+        <view>
+          <image src='/images/star{{coachInfo.points >= 1 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.points >= 2 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.points >= 3 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.points >= 4 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.points >= 5 ? "2" : "1" }}.png' class='star-img' />
+        </view>
+      </view>
+    </view>
+    <view class="data flexAround">
+      <view class="data-com flexColAroCenter">
+        <text class="bg-font">{{coachInfo.lesson_num}}</text>
+        <text class="small-font font-color-rgba">累计授课人次</text>
+      </view>
+      <view class="data-com flexColAroCenter">
+        <text class="bg-font">{{coachInfo.ages}}</text>
+        <text class="small-font font-color-rgba">本店执教年限</text>
+      </view>
+    </view>
+  </view>
+  <!-- 详细介绍 -->
+  <view class='detailIntro boxModel whiteBackgound'>
+    <view class='detailIntro-title'>详细介绍</view>
+    <view class='detailIntro-content font-color-rgba'>{{pagedata.detail}}</view>
+  </view>
+  <!-- 场馆介绍 -->
+  <view class='detailIntro boxModel whiteBackgound' bindtap="toBusinessesDetail">
+    <view class='detailIntro-title'>所在场馆</view>
+    <view class='detailIntro-content'>
+      <view class="imgs"><image src="{{static+coachInfo.res.img}}" /></view>
+      <view class="cg-info flexColJustBetween">
+        <text class="title-hide">{{coachInfo.res.title}}</text>
+        <view>
+          <image src='/images/star{{coachInfo.res.points >= 1 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.res.points >= 2 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.res.points >= 3 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.res.points >= 4 ? "2" : "1" }}.png' class='star-img' />
+          <image src='/images/star{{coachInfo.res.points >= 5 ? "2" : "1" }}.png' class='star-img' />
+        </view>
+        <view class="address flexAlign font-color-rgba" catchtap="getLocation">
+          <view class="map-img"><image src="/images/map2.png" /></view>
+          <text class="title-hide">{{coachInfo.res.raddr}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部固定栏 -->
+  <view class="fix borderMiddleTopRgba bottomFixed boxModel whiteBackgound">
+    <view class="left flexAlign">
+      合计： <text class="color">￥{{ pagedata.price }}</text> 
+    </view>
+    <view class="rig flexCenter">
+      <view class="reservePay flexCenter whiteFont" bindtap="modialog">立即预约</view>
+    </view>
+  </view>
+  <!-- 模态框 -->
+  <block wx:if='{{isModialog}}'>
+    <view class="mask">
+      <view class="modialog bottomFixed boxModel whiteBackgound">
+        <view class="modialog-select flexBetween">
+          <view>请选择上课时间</view>
+          <view class="modialog-close textAlign font-color-rgba" bindtap="closeModialog">
+            <image class="close" src="/images/cancel.png" />
+          </view>
+        </view>
+        <view class="date flexJustAround borderMiddleBottomRgba">
+          <block wx:for='{{slider}}' wx:key='index'>
+            <view class="date-list flexColAroCenter {{wIndex == index ? 'isWeek' : ''}}" data-index="{{index}}" catchtap="tapDate">
+              <text>{{item.week}}</text>
+              <text>{{item.date}}</text>
+            </view>
+          </block>
+        </view>
+        <block wx:for='{{timeLists}}' wx:for-item='option' wx:for-index='idx' wx:key='idx'>
+          <view class="re-time boxModel font-color-rgbaThr">
+            <view>{{option.name}}</view>
+            <view class="time-box">
+              <block wx:for='{{option.lists}}' wx:key='index'>
+                <view class="time-list boxModel flexCenter {{item.id == timesId ? 'bgColor' : ''}}"
+                  data-times="{{item.times}}" data-id="{{item.id}}" bindtap="selectedTime">
+                    {{item.times}}
+                </view>
+              </block>
+            </view>
+          </view>
+        </block> 
+        <view class="reserveBtn flexCenter whiteFont" catchtap="reserveBtn">预约</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel">
+          <image class="tel-bg" src="/images/getphone.png" />
+          <image class="tel-close-modialog" src="/images/cancel.png" bindtap="closeTelModia" />
+        </view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

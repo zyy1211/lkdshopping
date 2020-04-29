@@ -1,0 +1,71 @@
+<view class='con'>
+<view class='whiteBackgound container'>
+  <view class='header textAlign boxModel '>
+    <text>{{title}}</text>
+    <view class='header-date flexAround boxModel font-color-rgba'>
+      <view class='com flexAlign'>
+        <image class='timeImg' src='/images/time1.png' />
+        <text>{{newstime}}</text>
+      </view>
+      <view class='com flexAlign'>
+        <image class='eyes' src='/images/eyes.png' />
+        <text>{{vnum}}</text>
+      </view>
+      <view>
+        <!-- 回到首页(分享的时候显示) -->
+        <image wx:if="{{isshare}}" bindtap='backHome' class='d-back-home' src='/images/homeIcon.png'/>
+        <!-- 分享功能 -->
+        <button class='shareBtn whiteBackgound boxModel flexCenter' open-type='share'>分享</button>
+      </view>
+    </view>
+
+    <view wx:if='{{typeid == "2"}}' class="sign-up boxModel">
+      <view class="absolute-box flexAround">
+        <view class="signUp flexCenter whiteFont boxModel " bindtap="enroll">
+          已报名
+        </view>
+        <view class="signUp flexCenter whiteFont boxModel" bindtap="comeSignUp">
+          立即报名
+        </view>
+      </view>
+      <image class="bg" src="/images/newsBj.jpg" />
+    </view>
+  </view>
+
+  <view class='body'>
+    <view class='content font-color-rgba'>
+      <rich-text nodes="{{content}}"></rich-text>
+    </view>
+  </view>
+  <view wx:if='{{typeid == "1"}}' class='recommend'>资讯推荐</view>
+  <view wx:if='{{typeid == "2"}}' class='recommend'>赛事报道</view>
+  <view class='zixun'>
+    <block wx:if='{{zxList != ""}}'>
+      <block wx:for='{{zxList}}' wx:key='index'>
+        <view class='list boxModel' data-news_id='{{item.news_id}}' bindtap='toZXdetail'>
+          <view class='left-img overHide'>
+            <image src='{{static+item.img}}'></image>
+          </view>
+          <view class='right-con flexColJustAround'>
+            <view class='title'>{{item.title}}</view>
+            <view class='sport font-color-rgba'>{{item.tags}}</view>
+            <view class='bott font-color-rgba flexBetween'>
+              <view class='flexAlign'>
+                <image class='timeImg' src='/images/time1.png'></image>
+                <text>{{newstime}}</text>
+              </view>
+              <view class='flexAlign'>
+                <image class='eyes' src='/images/eyes.png'></image>
+                <text>{{item.vnum}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class="no-data flexCenter">暂无新资讯</view>
+    </block>
+  </view>
+</view>
+</view>

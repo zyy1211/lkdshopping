@@ -1,0 +1,95 @@
+@import '/pages/dynamicDetail/index.wxss';
+.nav{
+  width: 100%;
+  height: 100rpx;
+  font-size: 28rpx;
+}
+.nav-list{
+  width: 100rpx;
+  height: 100%;
+}
+.nav-img{
+  width: 48rpx;
+  height: 48rpx;
+}
+.nav-bott{
+  border-bottom: 1rpx solid #3CBDF9;
+  color:#3CBDF9;
+}
+.date{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  font-size: 24rpx;
+}
+.time,.pl{
+  width: 50%;
+  height: 100%;
+}
+.time-img,.pl-img,.dz-img{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.vLists{
+  width:100%;
+  padding:50rpx 25rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+/* 暂无数据图片大小 */
+.nodata{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left:0;
+  top: 100rpx;
+}
+.list{
+  width:48%;
+  height: 360rpx;
+}
+.list-img{
+  width:100%;
+  height: 215rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+.list-poster{
+  width:100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9;
+}
+.list-play{
+  width:100rpx;
+  height: 100rpx;
+  position: absolute;
+  z-index: 55;
+}
+.title-video{
+  width:100%;
+  font-size: 28rpx;
+  margin-top:10rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.bott{
+  width:100%;
+  height: 40rpx;
+  font-size: 24rpx;
+}
+.timeImg{
+  width:30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+
+/* 模态框 */
+.mask{
+  top: 0;
+}

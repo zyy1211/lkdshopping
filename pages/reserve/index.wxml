@@ -1,0 +1,20 @@
+<!--pages/reserve/index.wxml-->
+<view class="con">
+  <block wx:for='{{bannerLists}}' wx:key='index'>
+    <view class="reserve last" data-index="{{index}}" bindtap='toLinks'>
+      <image src='{{static+item.img}}' />
+    </view>
+  </block>
+
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel"><image src="/images/getphone.png" /></view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

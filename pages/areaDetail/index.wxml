@@ -1,0 +1,95 @@
+<view class="con">
+  <view class="detailBox whiteBackgound boxModel">
+    <view class="time-pay flexAlign ">
+      <block wx:if='{{order.status.value == 0}}'><image class="time-img" src="/images/cancel.png" /></block>
+      <block wx:elif='{{order.status.value == 1}}'><image class="time-img" src="/images/paying.png" /></block>
+      <block wx:elif='{{order.status.value == 2}}'><image class="time-img" src="/images/paid.png" /></block>
+      <block wx:elif='{{order.status.value == 4}}'><image class="time-img" src="/images/success.png" /></block>
+      <view wx:if='{{order.status.value == 1}}'>
+        {{order.status.text}}，请在<text class="font-color">{{min}}</text>分<text class="font-color">{{sec}}</text> 秒内完成支付
+      </view>
+      <view wx:else>
+        {{order.status.text}}
+      </view>
+    </view>
+    <view class="order font-color-rgbaThr flexAlign">
+      <text>订单编号： </text>
+      <text class="font-color-rgbaTwo">{{order.order_no}}</text>
+    </view>
+    <view class="order font-color-rgbaThr">
+      下单时间： <text class="font-color-rgbaTwo">{{order.create_time}}</text>
+    </view>
+    <view class="detail-box font-color-rgbaThr">
+      <view class="detail-address borderMiddleBottomRgba boxModel flexAlign">
+        <image class="map" src="/images/map.png" />
+        <text>{{order.store_name}}</text>
+      </view>
+      <view class="order-lists boxModel">
+        <block wx:if='{{isOpen}}'>
+          <block wx:if='{{order.rsortid != "1"}}'>
+            <view class="orderList flexAlign boxModel">
+              <block wx:if='{{order.rsortid == "3"}}'>教练名称： </block>
+              {{orderLists[0].title}} ￥{{orderLists[0].price}}
+            </view>
+            <view class="orderList flexAlign boxModel">
+              上课时间： {{orderLists[0].years}}/{{orderLists[0].dates}} {{orderLists[0].times}} {{orderLists[0].weeks}}
+            </view>
+          </block>
+          <block wx:elif='{{order.rsortid == "1"}}' >
+            <block wx:for='{{orderLists}}' wx:key='index'>
+              <view class="order-list boxModel">
+                {{item.type}} <text class="chart">.</text> {{item.sequence}} {{item.years}}/{{item.dates}} {{item.times}} ￥{{item.price}}
+              </view>
+            </block>
+          </block>
+        </block>
+        <block wx:else>
+          <view class="order-list boxModel">
+            {{orderLists[0].type}} <text class="chart">.</text> {{orderLists[0].sequence}} {{orderLists[0].years}}/{{orderLists[0].dates}} {{orderLists[0].times}} ￥{{orderLists[0].price}}
+          </view>
+        </block>
+      </view>
+      <view wx:if='{{ orderLists.length > 1 }}' class="open-close flexAlign boxModel" bindtap="open">
+        <text>{{isOpen ? '收起' : '打开'}}</text>
+        <image src="/images/1.png" class="img {{isOpen ? '' : 'activeRotate'}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="order-fee boxModel whiteBackgound">
+    <view class="order-pri boxModel font-color-rgbaThr">订单金额</view>
+    <view class="fee flexBetween">
+      <text wx:if='{{order.rsortid == "1"}}'>场地费</text>
+      <text wx:else>课程费</text>
+      <text class="font-color-rgbaThr">￥{{order.all_price}}</text>
+    </view>
+    <view wx:if='{{ order.minus_price != "0.00" }}' class="fee flexBetween borderMiddleBottomRgba">
+      <text>积分抵扣</text>
+      <text class="font-color-rgbaThr">- ￥{{order.minus_price}}</text>
+    </view>
+    <view class="fee big-font flexBetween">
+      <text>实付款</text>
+      <text class="font-color-rgbaThr">￥{{order.pay_price}}</text>
+    </view>
+  </view>
+  <!-- 注释说明 -->
+  <view wx:if='{{order.status.value == 1}}' class="comment flexAlign font-color-rgbaThr boxModel">
+    <image class="comment-img" src="/images/tip1.png" />
+    <text>请在规定时间内完成支付，否则订单会被自动取消</text>
+  </view>
+  <!-- 底部固定栏 -->
+  <view class="fix borderMiddleTopRgba flexJustBetw whiteBackgound bottomFixed">
+    <block wx:if='{{order.status.value == 1}}'>
+      <view class="cancel font-color-rgbaThr boxModel flexAlign" bindtap="cancel">取消订单</view>
+      <view class="pay whiteFont flexCenter" bindtap="pay">立即支付</view>
+    </block>
+    <block wx:elif='{{order.status.value == 2}}'>
+      <view class="cancel"></view>
+      <view class="pay whiteFont flexCenter" bindtap="toUse">核销码</view>
+    </block>
+    <block wx:elif='{{order.status.value == 3}}'>
+      <view class="cancel"></view>
+      <view class="pay whiteFont flexCenter" bindtap="toPj">去评价</view>
+    </block>
+  </view>
+</view>

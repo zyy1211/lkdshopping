@@ -1,0 +1,48 @@
+
+.commodity_screen2 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 999;
+  color: #fff;
+}
+
+/* 海报 */
+.poste_box{
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.poste_content{
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 65rpx;
+  background-color: #fff;
+  position: absolute;
+  top: 100rpx;
+  z-index: 999;
+  border-radius: 5rpx;
+}
+.close-poste{
+ width: 100%;
+ height: 80rpx;
+ position: absolute;
+ bottom: 200rpx;
+ z-index: 999;
+ text-align: center;
+}
+.close-poste image{
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 999;
+  border-radius: 50%;
+}

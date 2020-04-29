@@ -1,0 +1,60 @@
+<view class="con">
+  <view class="detailBox whiteBackgound boxModel">
+    <view class="order font-color-rgbaThr flexAlign">
+      <text>买家名称： </text>
+      <view class="font-color-rgbaTwo">{{store.user_name}}</view>
+    </view>
+    <view class="order font-color-rgbaThr flexAlign">
+      <text>下单时间：</text>
+      <text class="font-color-rgbaTwo">{{store.create_time}}</text>
+    </view>
+    <view class="detail-box font-color-rgbaThr">
+      <view class="detail-address font-color-rgbaTwo borderMiddleBottomRgba boxModel flexAlign">
+        <text>{{store.store_name}}</text>
+      </view>
+      <view class="order-lists boxModel">
+        <block wx:for='{{orderLists}}' wx:key='index'>
+          <block wx:if='{{store.rsortid == "1"}}' >
+            <view class="order-list boxModel">
+              {{item.type}} <text class="chart">.</text> {{item.sequence}} {{item.years}}/{{item.dates}} {{item.times}} ￥{{item.price}}
+            </view>
+          </block>
+          <block wx:elif='{{store.rsortid == "3"}}' >
+            <view class="order-list boxModel">教练名称: {{item.title}} <text> 课程费用: </text>￥{{item.price}}</view>
+            <view class="order-list boxModel">上课时间: {{item.years}}/{{item.dates}} {{item.times}} {{item.weeks}}</view>
+          </block>
+          <block wx:else >
+            <view class="order-list boxModel">{{item.title}} ￥{{orderLists[0].price}}</view>
+            <view class="order-list boxModel">上课时间: {{item.years}}/{{item.dates}} {{item.times}} {{item.weeks}}</view>
+          </block>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-fee boxModel whiteBackgound">
+    <view class="order-pri boxModel font-color-rgbaThr">订单金额</view>
+    <!-- <view class="fee flexBetween">
+      <text wx:if='{{store.rsortid == "1"}}'>场地费</text>
+      <text wx:else>课程费</text>
+      <text class="font-color-rgbaThr">￥{{store.all_price}}</text>
+    </view>
+    <view wx:if='{{ store.minus_price != "0.00" }}' class="fee flexBetween borderMiddleBottomRgba">
+      <text>积分抵扣</text>
+      <text class="font-color-rgbaThr">￥{{store.minus_price}}</text>
+    </view> -->
+    <view class="fee big-font flexBetween">
+      <text>总金额</text>
+      <text class="font-color-rgbaThr">￥{{store.all_price}}</text>
+    </view>
+  </view>
+  <!-- 注释说明 -->
+  <view wx:if='{{!flag}}' class="comment big-font whiteBackgound flexCenter boxModel">
+    <icon type="success"></icon>
+    <text class="comment-text">核销成功</text>
+  </view>
+  <!-- 底部固定栏 -->
+  <block wx:if='{{flag}}'>
+    <view class="fix borderMiddleTopRgba whiteFont bottomFixed flexCenter" bindtap="confirm">确认核销</view>
+  </block>
+</view>

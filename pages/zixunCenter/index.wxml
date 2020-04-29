@@ -1,0 +1,33 @@
+<view class='con'>
+  <block wx:if='{{isShow}}'>
+    <view class='zixun whiteBackgound'>
+      <block wx:for='{{zxList}}' wx:key='index'>
+        <view class='list boxModel' data-news-id='{{item.news_id}}' bindtap='toZXdetail'>
+          <view class='left-img overHide'>
+            <image src='{{static+item.img}}' />
+          </view>
+          <view class='right-con'>
+            <view class='title'>{{item.title}}</view>
+            <view class='sport font-color-rgba'>{{item.tags}}</view>
+            <view class='bott flexBetween'>
+              <view class='font-color-rgba flexAlign'>
+                <image class='timeImg' src='/images/time1.png' />
+                <text>{{item.newstime}}</text>
+              </view>
+              <view class='font-color-rgba'>
+                <image class='eyes' src='/images/eyes.png' />
+                <text>{{item.vnum}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,36 @@
+/* pages/enroll/index.wxss */
+.enroll-box{
+  width: 100%;
+}
+.list-item{
+  font-size: 24rpx;
+}
+.list{
+  width: 100%;
+  height: 150rpx;
+  font-size: 28rpx;
+  display: flex;
+  margin-bottom: 15rpx;
+  padding-left: 25rpx;
+}
+.list-img{
+  width: 120rpx;
+  height: 120rpx;
+}
+.list-img image{
+  width: 100%;
+  height: 100%;
+}
+.list-name{
+  height: 110rpx;
+  margin-left: 25rpx;
+}
+
+/* 暂无数据图片大小 */
+.nodata{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left:0;
+  top: 100rpx;
+}

@@ -1,0 +1,35 @@
+.evaluate{
+  width: 100%;
+  height: 90rpx;
+  padding: 0 30rpx;
+  font-size:26rpx;
+}
+.starPoints{
+  width: 250rpx;
+  height: 100%;
+  font-size:30rpx;
+}
+.starPoints image{
+  width:31rpx;
+  height: 30rpx;
+}
+.textarea{
+  width:100%;
+  padding:0 30rpx;
+  font-size:26rpx;
+}
+.txt{
+  width:100%;
+  height: 160rpx;
+  border:1px solid rgba(229,229,229,1);
+  border-radius:10px;
+  padding: 15rpx 20rpx;
+}
+.submit{
+  width: 300rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}

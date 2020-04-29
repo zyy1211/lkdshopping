@@ -1,0 +1,281 @@
+.search{
+  width:100%;
+  height: 100rpx;
+  border: 0;
+  padding-left:30rpx;
+  position: relative;
+}
+.input-search{
+  width:574rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left:98rpx;
+  font-size:24rpx;
+  color:rgba(153,153,153,1);
+  border:0;
+  border-radius:35rpx;
+}
+.placeholder{
+  font-size:24rpx;
+  color:rgba(153,153,153,1);
+}
+.img-search{
+  width: 34rpx;
+  height: 36rpx;
+  position: absolute;
+  left:57rpx;
+}
+.img-search image{
+  width:100%;
+  height: 100%;
+}
+.schedule{
+  width: 60rpx;
+  height: 52rpx;
+  position: absolute;
+  right: 43rpx;
+}
+.banner{
+  width:750rpx;
+  height: 400rpx;
+}
+.active {
+  z-index: 20;
+  transform: scale(1.07);
+  transition: all 0.2s ease-in 0s;
+}
+.swiper-img{
+  width: 644rpx;
+  height: 337rpx;
+  border-radius: 20rpx;
+}
+.shadow{
+  width:600rpx;
+  height: 307rpx;
+  position: absolute;
+  border: 0;
+  outline: 0;
+  left:48rpx;
+  top:153rpx;
+  z-index: 0;
+  box-shadow: 0rpx 40rpx 40rpx rgba(0, 0, 0,.2);
+}
+.detail{
+  width:690rpx;
+  margin: 25rpx auto;
+  padding: 25rpx 0;
+  flex-flow: wrap;
+  box-shadow:0rpx 0rpx 20rpx 0rpx rgba(69,69,69,0.06);
+  border-radius:20rpx;
+}
+.list{
+  width:25%;
+  height: 180rpx;
+}
+.icon{
+  width:91rpx;
+  height: 91rpx;
+}
+.sportName{
+  font-size:24rpx;
+  line-height:44rpx;
+}
+.zixun{
+  width:690rpx;
+  height:107rpx;
+  margin: 25rpx auto;
+  box-shadow:0rpx 0prx 20rpx 0rpx rgba(69,69,69,0.06);
+  border-radius:20rpx;
+  font-size:26rpx;
+  line-height:44rpx;
+}
+.zG-left{
+  width:86rpx;
+  margin-left:23rpx;
+  position: relative;
+}
+.t-img{
+  width:86rpx;
+  height: 36rpx;
+  font-size:22rpx;
+  border-radius: 18rpx;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.zG-img{
+  width:6rpx;
+  height: 53rpx;
+  margin-left: 26rpx;
+}
+.zG-right{
+  width:458rpx;
+  height: 100%;
+  margin-left:50rpx;
+  flex-wrap: wrap;
+  
+}
+.swiper-item{
+  width:100%;
+  height: 50rpx;
+}
+.zG-right text{
+  width:100%;
+  height: 50rpx;
+  font-size:26rpx;
+  line-height:50rpx;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reserve{
+  width:690rpx;
+  margin: 25rpx auto;
+  box-shadow:0rpx 0rpx 20rpx 0rpx rgba(69,69,69,0.06);
+  border-radius:20rpx;
+  position: relative;
+}
+.intro{
+  width:100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: relative;
+}
+.intro text{
+  font-size:28rpx;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  position: absolute;
+  left:11rpx;
+  bottom:5rpx;
+}
+.leftTop{
+  width:157rpx;
+  height: 57rpx;
+  margin-top:20rpx;
+  margin-left:-5rpx;
+}
+.arrow{
+  width: 40rpx;
+  height: 100%;
+  position: absolute;
+  left:644rpx;
+  top:0;
+}
+.arrow-right{
+  width:15rpx;
+  height: 25rpx;
+}
+.dete{
+  width:100%;
+  height: 230rpx;
+  padding: 0 25rpx;
+}
+.dete-img{
+  width:290rpx;
+  height: 229rpx;
+}
+.img{
+  width: 100%;
+  height: 95%;
+}
+.dete-intro{
+  width:50%;
+}
+.dete-name{
+  font-size:28rpx;
+}
+.img-star{
+  margin-top: 17rpx;
+}
+.star{
+  width:35rpx;
+  height: 34rpx;
+  margin-right: 5rpx;
+}
+.com{
+  width:60%;
+}
+.map{
+  width:40%;
+  justify-content: flex-end; 
+}
+.map image{
+  width:21rpx;
+  height: 29rpx;
+  vertical-align: top;
+  position: relative;
+  left:-10rpx;
+}
+.yuding{
+  font-size:22rpx;
+  margin-top: 17rpx;
+}
+.rmb{
+  width:31rpx;
+  height: 31rpx;
+  vertical-align: middle;
+  margin-right: 8rpx;
+}
+.yd{
+  margin-top: 15rpx;
+  font-size: 24rpx;
+}
+.device{
+  width:690rpx;
+  margin:25rpx auto;
+  box-shadow:0px 0px 20rpx 0rpx rgba(69,69,69,0.06);
+  border-radius:20rpx;
+}
+.goods{
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24rpx;  
+}
+.goodsXModel{
+  margin-bottom: 34rpx;
+}
+.goods-intro{
+  width:50%;
+  padding: 2%;
+}
+.goods-img{
+  width:314rpx;
+  height: 248rpx;
+}
+.qc-img{
+  width:100%;
+  height: 100%;
+}
+.goods-name{
+  font-size:26rpx;
+  margin-top:10rpx;
+  margin-left:10rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.pri{
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-left:10rpx;
+  margin-right: 10rpx;
+}
+.ji-color{
+  color:orange;
+}
+.left{
+  width:127rpx;
+  font-size:26rpx;
+  color:orange;
+}
+.redu{
+  width:21rpx;
+  height: 50rpx;
+  margin-right: 8rpx;
+}
+.right{
+  font-size:24rpx;
+}

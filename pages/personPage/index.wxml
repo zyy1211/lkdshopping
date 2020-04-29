@@ -1,0 +1,81 @@
+<view class='con'>
+  <view class="user-info whiteFont">
+    <view class="user-img flexCenter">
+      <image class="user-big-avatar borderRadius" src="{{user.avatarurl}}" />
+      <view class="user-big-sex boxModel">
+        <block wx:if='{{user.gender == "2"}}'><image src="/images/female.png" /></block>
+        <block wx:elif='{{user.gender == "1"}}'><image src="/images/male.png" /></block>
+      </view>
+    </view>
+    <view class="user-name flexCenter">{{user.nickname}}</view>
+    <view class="user-fav flexCenter">关注 {{user.follow}} | 粉丝 {{user.fans}}</view>
+    <view class="user-fans flexCenter">
+      <view class="fans-btn flexCenter" bindtap="concern">{{ user.isFollow ? '已关注' : '+ 关注' }}</view>
+    </view>
+  </view>
+  <block wx:if='{{isShow}}'>
+    <block wx:for='{{dynamicLists}}' wx:key='index'>
+      <view class="dynamicList boxModel whiteBackgound">
+        <view class="user flexBetween" data-social_id="{{item.social_id}}" bindtap="toDynamicDetail">
+          <view class="user-left-box flexAlign">
+            <image class="user-avatar borderRadius" src="{{item.userinfo.avatarurl}}" />
+            <view class="user-sex boxModel">
+              <block wx:if='{{item.userinfo.gender == "2"}}'><image src="/images/female.png" /></block>
+              <block wx:elif='{{item.userinfo.gender == "1"}}'><image src="/images/male.png" /></block>
+            </view>
+            <text>{{item.userinfo.nickname}}</text>
+          </view>
+        </view>
+        <view wx:if="{{ item.content != '' }}" class="content boxModel">
+          {{item.content}}
+        </view>
+        <block wx:if="{{ item.stype == 1 }}">
+          <block wx:if="{{ item.lists.length > 1 }}">
+            <view class="imgUrlLists overHide boxModel">
+              <block wx:for='{{item.lists}}' wx:for-item='list' wx:for-index='idx' wx:key='idx'>
+                <image src="{{https+list.links}}" data-index="{{index}}" data-idx="{{idx}}" catchtap="previewImage" />
+              </block>
+            </view>
+          </block>
+          <block wx:if="{{ item.lists.length == 1 }}">
+            <view class="imgUrl boxModel">
+              <image src="{{https+item.lists[0].links}}" data-index="{{index}}" data-idx="0" catchtap="previewImage" />
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{ item.stype == 0 }}" >
+          <view class="videoUrl boxModel">
+            <video
+              object-fit='cover'
+              controls
+              src="{{https+item.lists[0].links}}"
+              show-mute-btn
+              show-center-play-btn
+              play-btn-position='center'
+            >
+            </video>
+          </view>
+        </block> 
+        <view class="date font-color-rgba" data-social_id="{{item.social_id}}" bindtap="toDynamicDetail">
+          <view class="time flexAlign" >
+            <image class="time-img" src="/images/time1.png" />
+            <text>{{item.create_time}}</text>
+          </view>
+          <view class="pl flexAround">
+            <view class="flexCenter">
+              <image class="pl-img" src="/images/write.png" />
+              <text>{{item.cnum}}</text>
+            </view> 
+            <view class="flexCenter" data-social_id="{{item.social_id}}" data-index="{{index}}" catchtap="clickZan">
+              <image class="dz-img" src="/images/zan{{item.isLike ? '2' : '1'}}.png" />
+              <text>{{item.lnum}}</text>
+            </view> 
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <view class="null textAlign whiteBackgound">暂无动态</view>
+  </block>
+</view>

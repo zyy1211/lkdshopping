@@ -1,0 +1,219 @@
+<view class="con">
+  <!-- banner图 -->
+  <swiper class="swiper-image" bindchange="currentIndex" current='0'>
+    <block wx:for="{{imgUrls}}" wx:key='index'>
+      <swiper-item>
+        <image src="{{static+item.save_path+item.file_name}}" data-index='{{index}}' bindtap='previewImage' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 显示页码 -->
+  <view class='shadow whiteFont boxModel textAlign'>
+    <text class='shadow-currPage'>{{currIndex}}</text>
+    <text class='blod'>/</text>
+    <text class='shadow-totalPage'>{{imgUrls.length}}</text>
+  </view>
+
+  <view class='productInfo boxModel whiteBackgound'>
+    <view class='pro-title font-color-rgbaTwo'>
+      <block wx:if='{{type == "1"}}'><text class="ji-color">[积]</text></block>
+      {{goods_title}}
+    </view>
+    <view class='unit-price'>
+      <block wx:if='{{type == "0"}}'>
+        <view class='goods-price flexAlign'>¥ {{spec_list_form.goods_price}}</view>
+        <view class='line-price flexCenter'>¥ {{spec_list_form.line_price}}</view>
+      </block>
+      <block wx:elif='{{type == "1"}}'>
+        <view class='goods-price flexAlign'>{{spec_list_form.goods_price}} 积分</view>
+      </block>
+      <!-- 回到首页(分享的时候显示) -->
+      <image wx:if="{{isshare}}" bindtap='backHome' class='d-back-home' src='/images/homeIcon.png' />
+      <!-- 分享按钮，切换遮罩层 -->
+      <button class='shareBtn whiteBackgound boxModel flexCenter' bindtap='tapmMask'>分享</button>
+    </view>
+
+    <!-- 引用组件 -->
+
+    <my-poster id="getPoster" avater="{{share.img}}" types="{{type}}" codeimg="{{share.rcode}}"
+      price="{{spec_list_form.goods_price}}" productname="{{goods_title}}" linePri="{{spec_list_form.line_price}}">
+    </my-poster>
+    <!-- 遮罩层 -->
+    <block wx:if='{{isFlag}}'>
+      <view class='market topFixed' catchtap='tapmMask'>
+        <view class='share bottomFixed whiteBackgound'>
+          <button class='btn' catchtap='createPoster'>生成海报</button>
+          <button class='btn' open-type='share'>转发</button>
+          <button class='btn' catchtap='tapmMask'>取消转发</button>
+        </view>
+      </view>
+    </block>
+
+    <view class='amount'>
+      <view class='stock flexCenter'>
+        <image class='stock-img' src='/images/kucun.png' />
+        <text class="curr-stock">库存 {{spec_list_form.stock_num}}</text>
+      </view>
+      <view class='sale flexCenter'>
+        <image class='sale-img' src='/images/fire.png'></image>
+        <text class="curr-sale">销量 {{sales_initial}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 规格 -->
+  <view class='model whiteBackgound'>
+    <view class='selected font-color-rgbaTwo flexBetween'>
+      <text>已选</text>
+      <text class='color'>{{goods_num}} {{goods_jldw}}</text>
+      <view class='selected-img flexCenter' bindtap='dropDown'>
+        <image id="rotate" class="{{ !isDropdown ? 'activeRotate' : '' }}" src='/images/1.png' />
+      </view>
+    </view>
+    <block wx:if='{{isDropdown}}'>
+      <view class="modal_cont_box boxModel">
+        <block wx:if='{{isGroy}}'>
+          <block wx:for='{{spec_attr}}' wx:for-item='items' wx:for-index='idx' wx:key='idx'>
+            <view class="buy_number boxModel" data-group_id='{{items.group_id}}'>
+              <view class="buyNumber">
+                <text>{{items.group_name}}</text>
+              </view>
+              <view class="selectUl">
+                <block wx:for='{{items.spec_items}}' wx:key='index'>
+                  <view class='selList textAlign {{ item.ischecked ? "isActive" : "" }}' data-item_id='{{index}}'
+                    data-attr_id='{{idx}}' bindtap='select'>
+                    {{item.spec_value}}
+                  </view>
+                </block>
+              </view>
+            </view>
+          </block>
+        </block>
+        <view class="buy_number boxModel">
+          <view class="buyNumber">
+            <block wx:if='{{type == "0"}}'>购买数量</block>
+            <block wx:elif='{{type == "1"}}'>兑换数量</block>
+          </view>
+          <view class="selectNumber overHide">
+            <button bindtap="down" class="default {{goods_num>1?'':' default-active'}}">-</button>
+            <input type="number" class='inputBtn boxModel textAlign' value="{{goods_num}}" disabled></input>
+            <button bindtap="up" class="default">+</button>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 商家 -->
+  <view class='accept whiteBackgound'>
+    <view class='serviceProvider font-color-rgbaTwo flexBetween' bindtap="toBusinDetail">
+      <text>商家</text>
+      <text class='providerNmae'>栎平体育</text>
+      <view class='selected-img flexCenter'>
+        <image src='/images/arrow-right.png'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='pro whiteBackgound'>
+    <view class='proTitle flexJustAround'>
+      <view class='proDetail flexColumnCenter font-color-rgbaTwo {{tap_index == 1 ? "fontColor" : " " }}'
+        data-tap_index="1" bindtap='showDetail'>
+        <text>商品详情</text>
+        <view class='blueSlide {{tap_index == 1 ? "bgcolor" : " " }}'></view>
+      </view>
+      <view class='proDetail flexColumnCenter font-color-rgbaTwo {{tap_index == 2 ? "fontColor" : " " }}'
+        data-tap_index="2" bindtap='showDetail'>
+        <text>物流与售后</text>
+        <view class='blueSlide {{tap_index == 2 ? "bgcolor" : " " }}'></view>
+      </view>
+      <view class='proPj flexColumnCenter font-color-rgbaTwo {{tap_index == 3 ? "fontColor" : " " }}' data-tap_index="3"
+        bindtap='showDetail'>
+        <text>商品评价</text>
+        <view class='blueSlide {{tap_index == 3 ? "bgcolor" : " " }}'></view>
+      </view>
+    </view>
+    <!-- 显示商品详情 -->
+    <block wx:if='{{tap_index == 1}}'>
+      <view class="cBody">
+        <view class='pj-con font-color-rgbaTwo'>
+          <rich-text nodes="{{proContent}}"></rich-text>
+        </view>
+      </view>
+    </block>
+    <!-- 显示物流与售后 -->
+    <block wx:elif='{{tap_index == 2}}'>
+      <view class="cBody">
+        <view class='pj-con font-color-rgbaTwo'>
+          <rich-text nodes="{{aftersales}}"></rich-text>
+        </view>
+      </view>
+    </block>
+    <!-- 显示商品评价 -->
+    <block wx:elif='{{tap_index == 3}}'>
+      <block wx:if='{{evaluation != "" }}'>
+        <block wx:for='{{evaluation}}' wx:key='index'>
+          <view class='pjList boxModel'>
+            <view class='user flexBetween'>
+              <view class='avator borderRadius overHide'>
+                <image src='{{item.avatarurl}}'></image>
+              </view>
+              <view class='userName font-color-rgba'>
+                <text>{{item.nickname}}</text>
+                <view class='starImg'>
+                  <image src='/images/star{{item.points >= 1 ? "2" : "1" }}.png' />
+                  <image src='/images/star{{item.points >= 2 ? "2" : "1" }}.png' />
+                  <image src='/images/star{{item.points >= 3 ? "2" : "1" }}.png' />
+                  <image src='/images/star{{item.points >= 4 ? "2" : "1" }}.png' />
+                  <image src='/images/star{{item.points >= 5 ? "2" : "1" }}.png' />
+                </view>
+              </view>
+              <view class='date flexColJustBetween'>
+                <text>{{item.time}}</text>
+                <view class="pj-attr flexBetween">
+                  <text>{{item.goods_attr}}</text>
+                  <text>x{{item.total_num}}</text>
+                </view>
+              </view>
+            </view>
+            <view class='pj-con font-color-rgbaTwo'>{{item.content}}</view>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class='user pj-con font-color-rgbaTwo flexCenter'>暂无商品评价</view>
+      </block>
+    </block>
+  </view>
+
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel">
+          <image class="tel-bg" src="/images/getphone.png" />
+          <image class="tel-close-modialog" src="/images/cancel.png" bindtap="closeTelModia" />
+        </view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber"
+          bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+
+  <view class='fix bottomFixed flexAlign whiteBackgound'>
+    <view class='contact flexAlign'>
+      <button class="contac-btn flexCenter boxModel" open-type="contact">
+        <image src='/images/contact.png' />
+      </button>
+      <image class="cat-img" src='/images/cart.png' bindtap='toCarLists' />
+      <block wx:if='{{showCartNum}}'>
+        <text class="cartNum borderRadius flexCenter whiteFont">{{cartNum}}</text>
+      </block>
+    </view>
+    <view class='addCart flexCenter' bindtap='addCarLists'>加入购物车</view>
+    <view wx:if='{{type == "0"}}' class='nowBuy whiteFont flexCenter {{isban ? "ban" : ""}}' bindtap='toPay'>立即购买</view>
+    <view wx:else class='nowBuy whiteFont flexCenter {{isban ? "ban" : ""}}' bindtap='toPay'>立即兑换</view>
+  </view>
+</view>

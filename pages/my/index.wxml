@@ -1,0 +1,121 @@
+<view class="con">
+  <!-- 头部 -->
+  <view class='header'>
+    <view class='h-top boxModel'>
+      <view class='avator borderRadius overHide'>
+        <image src='{{avatarUrl}}'/>
+      </view>
+      <button class='userName whiteFont' bindtap="toLogin">{{userName}}</button>
+      <view class="set flexCenter" bindtap="toPersonCenter" >
+        <image class='set-img' src='/images/set.png' />
+      </view>
+    </view>
+    
+  </view>
+  <!-- 预约 -->
+  <view class='order whiteBackgound'>
+    <view class='allOrder flexBetween' data-index='{{0}}' bindtap="toMyReserve">
+      <text class='my-order'>我的预约</text>
+      <text class='my-all'>查看全部</text>
+      <image class='seeAll' src='/images/arrow-right.png'/>
+    </view>
+    <view class='ul'>
+      <block wx:for='{{list}}' wx:key='index'>
+        <view class='li flexColAroCenter' data-index='{{index}}' bindtap='toMyReserve'>
+          <image src='{{item.src}}' class='li-img'/>
+          <text>{{item.txt}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 我的钱包 -->
+  <view class='pack whiteBackgound'>
+    <view class='qianbao flexBetween'>
+      <text class='my-pack'>我的钱包</text>
+    </view>
+    <view class='me flexAlign'>
+      <view class='yuE font-color-rgbaTwo' bindtap="toRecord">
+        <text>{{yuE}}</text>
+        <text class='yj textAlign'>明细</text>
+      </view>
+      <view class='jiFen font-color-rgbaTwo' bindtap="toPointsRecord">
+        <text>{{jiFen}}</text>
+        <text class='yj textAlign'>积分</text>
+      </view>
+    </view>
+  </view>
+  <!-- 我是商家 -->
+  <view class='pack business whiteBackgound' wx:if='{{isStore == "1"}}'>
+    <view class='qianbao flexBetween'>
+      <text class='my-pack'>我是商家</text>
+    </view>
+    <view class='ul'>
+      <block wx:for='{{busLists}}' wx:key='index'>
+        <view class='li flexColAroCenter' data-index='{{index}}' bindtap='bindBusi'>
+          <image src='{{item.src}}' class='li-img'/>
+          <text>{{item.txt}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 我是教练 -->
+  <view class='pack business whiteBackgound' wx:if='{{isCoach == "1"}}'>
+    <view class='qianbao flexBetween'>
+      <text class='my-pack'>我是教练</text>
+    </view>
+    <view class='ul'>
+      <block wx:for='{{coachLists}}' wx:key='index'>
+        <view class='li flexColAroCenter' data-index='{{index}}' bindtap='bindCoach'>
+          <image src='{{item.src}}' class='li-img'/>
+          <text>{{item.txt}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 客服 -->
+  <view class="contact overHide">
+    <button class="contac-btn" open-type="contact">
+      <image src='/images/contact.png'/>
+    </button>
+    <view class="contact-text textAlign font-color-rgbaThr">联系客服</view>
+  </view>
+
+  <!-- 我的报名 -->
+  <view class="myPicture flexBetween whiteBackgound" bindtap="toMyEnroll">
+    <view class='com borderWidth flexBetween'>
+      <image class='com-img' src='/images/myEnroll.png'/>
+      <text class='font-color-rgbaTwo'>我的报名</text>
+      <image class='com-arrow' src='/images/arrow-right.png' />
+    </view>
+  </view>
+
+  <!-- 我的动态 -->
+  <view class="myPicture flexBetween whiteBackgound" bindtap="toPhotoAlbum">
+    <view class='com borderWidth flexBetween'>
+      <image class='com-img' src='/images/album.png'/>
+      <text class='font-color-rgbaTwo'>我的动态</text>
+      <image class='com-arrow' src='/images/arrow-right.png' />
+    </view>
+  </view>
+  
+  <!-- 下半部分 -->
+  <view class="bott-half boxModel whiteBackgound">
+    <view class='com flexBetween' data-index='{{0}}' bindtap='toOrder'>
+      <image class='com-img' src='/images/myorder.png'/>
+      <text class='font-color-rgbaTwo'>我的订单</text>
+      <image class='com-arrow' src='/images/arrow-right.png' />
+    </view>
+    
+    <view class='com flexBetween' bindtap='toDeliveryAddress'>
+      <image class='com-img' src='/images/map2.png'/>
+      <text class='font-color-rgbaTwo'>地址管理</text>
+      <image class='com-arrow' src='/images/arrow-right.png' />
+    </view>
+    <!-- 风格商店 -->
+    <view class='store flexAround whiteBackgound' wx:if="{{isCoach == '0' || isStore == '0'}}">
+      <image src='/images/styleStore.png'/>
+      <view class='ruzhu textAlign' hover-class='yes' data-coach="{{isCoach}}" data-store="{{isStore}}" bindtap='toEnter'>我要入驻</view>
+    </view>
+  </view>
+</view>

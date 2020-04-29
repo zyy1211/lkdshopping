@@ -1,0 +1,40 @@
+<view class="con">
+  <view class="navTab borderTopRgba whiteBackgound">
+    <view class="nav-title nav-border-right flexCenter {{status == 'canuse' ? 'isActive' : ''}}" data-status="canuse" bindtap="look">
+      等待上课
+    </view>
+    <view class="nav-title flexCenter {{status == 'complate' ? 'isActive' : ''}}" data-status="complate" bindtap="look">
+      已完成
+    </view>
+  </view>
+  <!-- 预约信息 -->
+  <block wx:if='{{isShow}}'>
+    <view class="orderLists">
+      <block wx:for="{{reserveLists}}" wx:key='index'>
+        <view class="order-list whiteBackgound borderTopRgba">
+          <view class="order-info boxModel" data-info="{{item}}" bindtap="toCoachClassDetail">
+            <view class="order-img"><image src="{{static+item.img}}" /></view>
+            <view class="info">
+              <view class="info-date font-color-rgba">
+                <view>上课时间：</view>
+                <view class="list-date">
+                  {{item.years}}/{{item.dates}} {{item.times}} {{item.weeks}}
+                </view>
+              </view>
+              <view class="flexBetween list-date">
+                <view class="font-color-rgbaThr">上课人数：{{item.user_num}}</view>
+                <view class="font-color-rgba">查看详情</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

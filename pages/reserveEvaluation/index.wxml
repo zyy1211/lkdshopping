@@ -1,0 +1,27 @@
+<view class="con">
+  <view class="evaluate flexBetween boxModel font-color-rgba whiteBackgound">
+    <view>综合评分</view>
+    <view class="starPoints flexAround">
+      <image src="/images/star{{ point >= 1 ? '2' : '1' }}.png" data-point='1' bindtap='clickStar' />
+      <image src="/images/star{{ point >= 2 ? '2' : '1' }}.png" data-point='2' bindtap='clickStar' />
+      <image src="/images/star{{ point >= 3 ? '2' : '1' }}.png" data-point='3' bindtap='clickStar' />
+      <image src="/images/star{{ point >= 4 ? '2' : '1' }}.png" data-point='4' bindtap='clickStar' />
+      <image src="/images/star{{ point >= 5 ? '2' : '1' }}.png" data-point='5' bindtap='clickStar' />
+    </view>
+  </view>
+  <view class="evaluate flexAlign whiteBackgound boxModel borderMiddleTopRgba font-color-rgba">评价详情</view>
+  <view class="textarea flexColAlignEnd boxModel whiteBackgound">
+    <textarea 
+      class='txt boxModel font-color-rgbaTwo'
+      adjust-position
+      show-confirm-bar
+      focus
+      value="{{val}}"
+      placeholder='请输入您的评价' 
+      placeholder-class='font-color-rgbaThr'
+      bindinput	='inputText'
+      maxlength="300"
+    ></textarea>
+    <view class="submit flexCenter whiteFont" bindtap="submit">提交</view>
+  </view>
+</view>

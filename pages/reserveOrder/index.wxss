@@ -1,0 +1,83 @@
+.order{
+  width: 750rpx;
+  padding: 30rpx 25rpx 20rpx;
+}
+.order-title{
+  font-size: 26rpx;
+}
+.order-date{
+  height: 60rpx;
+  font-size: 30rpx;
+  color: rgba(56,219,248,1);
+  margin-top: 20rpx;
+}
+.order-date image{
+  width: 37rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+.orderList{
+  width: 100%;
+  height: 80rpx;
+  font-size: 27rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  margin-bottom: 5rpx;
+  padding: 0 25rpx;
+  background: rgba(229,229,229,1);
+}
+.all{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+.color{
+  color: #DB2121;
+}
+.fee{
+  width: 750rpx;
+  padding: 0 25rpx;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.jf{
+  height: 120rpx;
+  font-size: 33rpx;
+}
+.ablePoints{
+  font-size: 28rpx;
+}
+.ablePri{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.fee-account{
+  height: 50rpx;
+}
+.payFont{
+  font-size: 33rpx;
+  height: 70rpx;
+}
+.fix{
+  width: 750rpx;
+  height: 100rpx;
+  font-size: 28rpx;
+  display: flex;
+}
+.pay{
+  width: 40%;
+  height: 100%;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.price{
+  width: 60%;
+  height: 100%;
+  margin-left: 50rpx;
+}
+.payPrice{
+  font-size: 36rpx;
+}
+.symbol{
+  font-size: 24rpx
+}

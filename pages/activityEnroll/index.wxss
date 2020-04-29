@@ -1,0 +1,132 @@
+.con{
+  margin-bottom: 100rpx;
+}
+.container{
+  width:750rpx;
+}
+.header{
+  width:100%;
+  font-size: 32rpx;
+  padding: 30rpx 25rpx;
+  border-bottom: 1rpx solid rgba(229,229,229,1);
+  border-top:  1rpx solid rgba(229,229,229,1);
+}
+.header-date{
+  width:100%;
+  padding-top: 30rpx;
+}
+.com{
+  font-size: 26rpx;
+}
+.timeImg{
+  width:30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+.eyes{
+  width:38rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+
+.body{
+  width:700rpx;
+  margin:30rpx auto;
+}
+.content{
+  text-align: left;
+  margin-top:20rpx;
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+}
+.rich-img{
+  width: 100% ;
+  height: auto ;
+}
+
+.no-data{
+  width: 100%;
+  padding: 25rpx ;
+}
+
+.fix{
+  width: 100%;
+  height: 100rpx;
+  font-size: 25rpx;
+  display: flex;
+  border-top:  1rpx solid rgba(229,229,229,1);
+}
+.fix-left{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+.fix-right{
+  width: 100%;
+  height: 100%;
+}
+.out-circle{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+  border: 2rpx solid rgba(153,153,153,1);
+}
+.inner-circle{
+  width: 19rpx;
+  height: 19rpx;
+  background: rgba(81,171,255,1);
+}
+.isActive{
+  border: 2rpx solid rgba(81,171,255,1);
+}
+.fix-btn{
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.enroll-end{
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  background: gray;
+}
+/* 分享按钮 */
+.market{
+  width:100%;
+  height: 100%;
+  background:rgba(0,0,0,0.5);
+  z-index: 99;
+}
+.share{
+  width:100%;
+}
+.btn{
+  width:100%;
+  height: 100rpx;
+}
+.modia-box{
+  width: 640rpx;
+  padding: 50rpx 30rpx;
+  font-size: 28rpx;
+  border-radius: 15rpx;
+}
+.modia-title{
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.modia-content{
+  width: 100%;
+  margin-top: 30rpx;
+}
+.modia-btn-box{
+  width: 100%;
+  height: 70rpx;
+  margin-top: 70rpx;
+}
+.modia-btn{
+  width: 300rpx;
+  height: 100%;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}

@@ -1,0 +1,59 @@
+<view class='con'>
+  <view class='search boxModel flexAlign'>
+    <view class='img-search flexAlign'>
+    </view> 
+    <input type='text'
+      class='input-search boxModel whiteBackgound' 
+      placeholder='搜索场馆，课程，私教' 
+      placeholder-class='placeholder'
+      adjust-position='true'
+      value="{{key}}"
+      confirm-type="search"
+      bindconfirm="searchImg"
+      bindinput="keySearch"
+    />
+    <view class='search-btn flexCenter'><image class='img-search' src='/images/search.png' bindtap="searchImg" /></view>
+  </view>
+  <!-- 搜索的数据列表 -->
+  <block wx:if='{{isShow}}'>
+    <block wx:for='{{dataLists}}' wx:key='index'>
+      <view class='listContainer flexBetween boxModel whiteBackgound' data-title='{{item.title}}' data-id="{{item.id}}" data-rsortid="{{item.rsortid}}" bindtap='toDetail'>
+        <view class='preImg boxModel'>
+          <image wx:if='{{item.rsortid == "3"}}' src='{{item.img}}' />
+          <image wx:else src='{{static + item.img}}' />
+        </view>
+        <view class='place'>
+          <view class='placeName flexAlign font-color-rgbaTwo'>{{item.title}}</view>
+          <view class='starImg flexAlign'>
+            <image src='/images/star{{item.points >= 1 ? 2 : 1}}.png' />
+            <image src='/images/star{{item.points >= 2 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 3 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 4 ? 2 : 1}}.png' /> 
+            <image src='/images/star{{item.points >= 5 ? 2 : 1}}.png' /> 
+        </view>
+          <view class='yd flexAlign'>
+            <block wx:if="{{item.rsortid != '4'}}">
+              <image src='/images/money.png' />
+              预定<text class='pri'>{{item.price}}</text>元起
+            </block>
+          </view>
+          <view class='bott flexAlign'>
+            <view class='ball flexAlign'>
+              <text>{{item.tags}}</text>
+            </view>
+            <view class='distance flexAlign'>
+              <image src='/images/map.png'></image>
+              <text>{{item.juli}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

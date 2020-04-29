@@ -1,0 +1,63 @@
+@import "/pages/dynamicDetail/index.wxss";
+.user-info{
+  width: 100%;
+  height: 400rpx;
+  background: #4ea9f2;
+}
+.user-img{
+  width: 100%;
+  height: 120rpx;
+}
+.user-big-avatar{
+  width: 120rpx;
+  height: 120rpx;
+}
+.user-big-sex{
+  width: 33rpx;
+  height: 100%;
+  margin-left: -20rpx;
+}
+.user-big-sex image{
+  width: 33rpx;
+  height: 33rpx;
+}
+.user-name{
+  width: 100%;
+  height: 80rpx;
+  font-size: 32rpx;
+}
+.user-fav{
+  width: 100%;
+  font-size: 28rpx;
+}
+.user-fans{
+  width: 100%;
+  height: 140rpx;
+}
+.fans-btn{
+  width: 200rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #fff;
+}
+.date{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  font-size: 24rpx;
+}
+.time,.pl{
+  width: 50%;
+  height: 100%;
+}
+.time-img,.pl-img,.dz-img{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.null{
+  width: 100%;
+  height: 300rpx;
+  line-height: 300rpx;
+}

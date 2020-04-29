@@ -1,0 +1,103 @@
+.con{
+  margin-bottom: 0;
+  height: 100%;
+}
+.header{
+  width:100%;
+  height: 400rpx;
+  background: #4ea9f2;
+  font-size:26rpx;
+  letter-spacing: 1rpx;
+}
+.jl-txt{
+  font-size:32rpx;
+  margin-left:20rpx;
+}
+.everyDay-sign{
+  font-family:PingFang-SC-Bold;
+  font-size:34rpx;
+  font-weight:bold;
+  letter-spacing: 2rpx;
+  padding-top:37rpx;
+}
+.jilu{
+  width:100%;
+  height: 50rpx;
+  margin-top: 40rpx;
+}
+.jl-img{
+  width:40rpx;
+  height: 38rpx;
+}
+.signBox{
+  width: 700rpx; 
+  padding: 50rpx 0 50rpx;
+  border-radius: 10rpx;
+  margin: -150rpx 25rpx 0;
+}
+.signOptions{
+  width: 100%;
+  height: 150rpx;
+}
+.signOption{
+  width: 80rpx;
+  height: 100%;
+  font-size: 26rpx;
+}
+.signImg{
+  width: 56rpx;
+  height: 56rpx;
+}
+.isActive{
+  background: rgba(0,0,0,0.5);
+}
+.isbackground{
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.sign{
+  width: 350rpx;
+  height: 65rpx;
+  border-radius: 32rpx;
+  font-size: 28rpx;
+  margin: 100rpx auto 0;
+}
+.signLists{
+  width: 700rpx;
+  margin: 30rpx 25rpx 30rpx;
+  padding: 0 25rpx;
+  border-radius: 10rpx;
+}
+.list{
+  width:100%;
+  height: 120rpx;
+}
+.font-sign{
+  width: 100%;
+  height: 50%;
+  font-size: 32rpx;
+  justify-content: flex-end;
+}
+.s-time{
+  width: 100%;
+  height: 50%;
+  font-size: 24rpx;
+}
+.sign-time,.points{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.points{
+  font-size: 30rpx;
+  color: #DB2121;
+  justify-content: center;
+}
+.isOrange{
+  color: orange;
+}
+.soonSign{
+  width: 100%;
+  height: 500rpx;
+  font-size: 26rpx;
+}

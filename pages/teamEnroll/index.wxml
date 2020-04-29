@@ -1,0 +1,156 @@
+<view class='con font-color-rgba'>
+  <view class="team-name whiteBackgound team-box flexAlign">
+    <view class="name-text boxModel">创建队名：</view>
+    <input class="input-name boxModel" type="text" maxlength='10' value="{{teamData.teamTitle}}" placeholder-class="font-color-rgbaThr" data-type="title" bindinput="teamEvent" />
+    <image wx:if="{{option.titleerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+  </view>
+  <view class="item whiteBackgound team-box boxModel">
+    <view class="name-text name-text-align boxModel">项目：</view>
+    <view class="item-box boxModel">
+      <block wx:for='{{itemLists}}' wx:key='index'>
+        <view class="item-list boxModel flexJustAround" data-type="{{item.id}}" data-index="{{index}}" bindtap="checked">
+          <view>{{item.item_name}}</view>
+          <view wx:if='{{currIndex == index}}' class="check-box boxModel isActive">
+            <image src="/images/checkbox1.png" />
+          </view>
+          <view wx:else class="check-box boxModel"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="team-box whiteBackgound">
+    <view class="group-name wid-hei flexAlign">
+      <view class="name-text boxModel">组别：</view>
+      <view class="input-name cate-wid flexBetween boxModel" data-type="teamCate" bindtap="drawMenu">
+        <text>{{teamData.cateVal}}</text>
+        <image class="draw" src="/images/1.png" />
+        <view class="select-box boxModel" wx:if="{{teamData.isTeamcate}}">
+          <block wx:for='{{teamData.teamCate}}' wx:key='index'>
+            <view class="select-option text-ellipsis overHide" data-teamcate="{{item}}" data-type="teamCate" bindtap="teamEvent">{{item}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="team-box whiteBackgound">
+    <view class="group-name flexAlign">
+      <view class="name-text boxModel">领队姓名：</view>
+      <input class="input-name boxModel" placeholder-class="font-color-rgbaThr" maxlength='8' type="text" value="{{teamData.teamLeader}}" data-type="name" bindinput="teamEvent" />
+      <image wx:if="{{option.teamnameerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+    </view>
+  </view>
+  <view class="team-box whiteBackgound">
+    <view class="group-name flexAlign">
+      <view class="name-text boxModel">手机号码：</view>
+      <input class="input-name boxModel" placeholder-class="font-color-rgbaThr" maxlength='11' type="number" value="{{teamData.leaderTel}}" data-type="phone" bindinput="teamEvent" />
+      <image wx:if="{{option.teamphoneerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+    </view>
+  </view>
+  <view class="team-box whiteBackgound">
+    <view class="group-name flexAlign">
+      <view class="name-text boxModel">性别：</view>
+      <view class="gender flexAround" data-gender="男" data-type="gender" bindtap="teamEvent">
+        <text>男</text>
+        <view wx:if='{{teamData.leaderGender == "男"}}' class="gender-box overHide isActive flexCenter borderRadius">
+          <image src="/images/checkbox1.png" />
+        </view>
+        <view wx:else class="gender-box borderRadius"></view>
+      </view>
+      <view class="gender flexAround" data-gender="女" data-type="gender" bindtap="teamEvent">
+        <text>女</text>
+        <view wx:if='{{teamData.leaderGender == "女"}}' class="gender-box overHide isActive flexCenter borderRadius">
+          <image src="/images/checkbox1.png" />
+        </view>
+        <view wx:else class="gender-box borderRadius"></view>
+      </view>
+      <text class="weight">服装尺码：</text>
+      <view class="input-selected flexBetween boxModel" data-type="teamSize" bindtap="drawMenu">
+        <text>{{teamData.sizeVal}}</text>
+        <image class="draw" src="/images/1.png" />
+        <view class="select-box boxModel" wx:if="{{teamData.isTeamsize}}">
+          <block wx:for='{{teamData.teamSize}}' wx:key='index'>
+            <view class="select-option" data-teamsize="{{item}}" data-type="teamSize" bindtap="teamEvent">{{item}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="team-box whiteBackgound">
+    <view class="group-name flexAlign">
+      <view class="name-text boxModel">身份证号：</view>
+      <input class="input-name boxModel" type="text" placeholder-class="font-color-rgbaThr" maxlength='18' value="{{teamData.leaderIdcode}}" data-type="idcode" bindinput="teamEvent" />
+      <image wx:if="{{option.teamidcodeerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+    </view>
+  </view>
+  <!-- 报名人员 -->
+  <view class="enrolless-box">
+    <block wx:for='{{enrollessLists}}' wx:for-item='option' wx:for-index='idx' wx:key='idx'>
+      <view class="enrolless boxModel whiteBackgound">
+        <view class="flex-end">
+          <view class="increase borderRadius" bindtap="increase">
+            <image class="tick-png borderRadius" src="/images/checkbox_jia.png" />
+          </view>
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">队员姓名：</view>
+          <input class="input-name boxModel" placeholder-class="font-color-rgbaThr" maxlength='8' type="text" value="{{option.name}}" data-type="name" data-idx="{{idx}}" bindinput="setValue" />
+          <image wx:if="{{option.nameerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">手机号码：</view>
+          <input class="input-name boxModel" placeholder-class="font-color-rgbaThr" maxlength='11' type="number" value="{{option.phone}}" data-type="phone" data-idx="{{idx}}" bindinput="setValue" />
+          <image wx:if="{{option.phoneerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">性别：</view>
+          <view class="gender flexAround" data-gender="男" data-idx="{{idx}}" data-type="gender" bindtap="setValue">
+            <text>男</text>
+            <view wx:if='{{option.gender == "男"}}' class="gender-box overHide isActive flexCenter borderRadius">
+              <image src="/images/checkbox1.png" />
+            </view>
+            <view wx:else class="gender-box borderRadius"></view>
+          </view>
+          <view class="gender flexAround" data-gender="女" data-idx="{{idx}}" data-type="gender" bindtap="setValue">
+            <text>女</text>
+            <view wx:if='{{option.gender == "女"}}' class="gender-box overHide isActive flexCenter borderRadius">
+              <image src="/images/checkbox1.png" />
+            </view>
+            <view wx:else class="gender-box borderRadius"></view>
+          </view>
+          <text class="weight">服装尺寸：</text>
+          <view class="input-selected flexBetween boxModel" data-idx="{{idx}}" data-type="size" bindtap="drawMenu">
+            <text>{{option.size}}</text>
+            <image class="draw" src="/images/1.png" />
+            <view class="select-box boxModel" wx:if="{{option.issize}}">
+              <block wx:for='{{option.sizeArr}}' wx:key='index'>
+                <view class="select-option" data-size="{{item}}" data-idx="{{idx}}" data-type="size" bindtap="setValue">{{item}}</view>
+              </block>
+            </view>
+          </view>
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">身份证号：</view>
+          <input class="input-name boxModel" type="text" maxlength='18' placeholder-class="font-color-rgbaThr" value="{{option.idcard}}" data-type="idcode" data-idx="{{idx}}" bindinput="setValue" />
+          <image wx:if="{{option.idcodeerr}}" class="tick-png borderRadius" src="/images/checkbox_error.png" />
+        </view>
+        <view class="date">请保证姓名、性别、身份证号码相对应，否则将不能参加保险与参赛！</view>
+        <view class="flex-end">
+          <view class="increase borderRadius" data-idx="{{idx}}" bindtap="descrease">
+            <image class="tick-png borderRadius" src="/images/checkbox_jian.png" />
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 账单信息 -->
+  <view class="whiteBackgound">
+    <view class="bill flexAlign">参赛费用： {{price}}元</view>
+    <view class="bill date whiteBackgound">备注: (含意外保险+赛事纪念服)</view>
+  </view>
+
+  <!-- 立刻报名 -->
+  <view class="signUp-box flexCenter whiteBackgound">
+    <view class="signUp whiteFont flexCenter" bindtap="signUp">立即报名</view>
+  </view>
+  <view class="date whiteBackgound textAlign">报名截止日期：{{end_time}}</view>
+</view>

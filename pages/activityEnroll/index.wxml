@@ -1,0 +1,84 @@
+<view class='con'>
+<view class='whiteBackgound container'>
+  <view class='header textAlign boxModel '>
+    <text>{{dataObj.title}}</text>
+    <view class='header-date flexAround boxModel font-color-rgba'>
+      <view class='com flexAlign'>
+        <image class='timeImg' src='/images/time1.png' />
+        <text>{{dataObj.start_time}}</text>
+      </view>
+      <view class='com flexAlign'>
+        <image class='eyes' src='/images/eyes.png' />
+        <text>{{dataObj.vnum}}</text>
+      </view>
+      <view>
+        <!-- 回到首页(分享的时候显示) -->
+        <image wx:if="{{isshare}}" bindtap='backHome' class='d-back-home' src='/images/homeIcon.png'/>
+        <!-- 分享按钮，切换遮罩层 -->
+        <button class='shareBtn whiteBackgound boxModel flexCenter' bindtap='tapmMask' data-type="2">分享</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 引用组件 -->
+  <my-poster id="getPoster" avater="{{share.img}}" codeimg="{{share.rcode}}" param='1' productname="{{dataObj.title}}" ></my-poster>
+
+  <!-- 遮罩层 -->
+  <block wx:if='{{isFlag}}'>
+    <view class='market topFixed' catchtap='tapmMask' data-type="2">
+      <view class='share bottomFixed whiteBackgound'>
+        <button class='btn' catchtap='createPoster' >生成海报</button>
+        <button class='btn' open-type='share' >转发</button>
+        <button class='btn' catchtap='tapmMask' data-type="2">取消转发</button>
+      </view>
+    </view>
+  </block>
+
+  <!-- 富文本 -->
+  <view class='body'>
+    <view class='content font-color-rgba'>
+      <rich-text nodes="{{content}}"></rich-text>
+    </view>
+  </view>
+</view>
+
+<!-- 免责声明 -->
+<view wx:if="{{isModial}}" class='market topFixed flexCenter' data-type="1" catchtap='tapmMask'>
+  <view class="modia-box boxModel whiteBackgound">
+    <view class="modia-title">浙江省“威克多杯”2019年业余羽毛球邀请赛免责声明</view>
+    <view class="modia-content font-color-rgba">
+      本人自愿参加本次比赛，比赛期间本人愿意遵守大赛规程和纪律，做到安全参赛、文明参赛，并自行负责保管好个人财产物品，如比赛期间出现任何受伤等意外事故，及个人财物丢失等突发状况，本人愿意承担一切责任和损失，赛事方将不承担任何责任。
+特此声明！
+    </view>
+    <view class="modia-btn-box flexCenter">
+      <view class="modia-btn whiteFont flexCenter" catchtap="confirm">同意此声明</view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部固定栏 -->
+<view class="fix flexJustBetw boxModel whiteBackgound bottomFixed">
+  <block wx:if="{{dataObj.expire_data == '1'}}">
+    <!-- <view class="fix-left flexJustAround">
+      <view class="pay-method flexCenter" data-type="1" bindtap="tapContest">
+        <view class="out-circle borderRadius boxModel flexCenter {{!isteam ? 'isActive' : ''}}">
+          <view wx:if="{{!isteam}}" class="inner-circle borderRadius"></view>
+        </view>
+        <text>单项报名</text>
+      </view>
+      <view class="pay-method flexCenter" data-type="2" bindtap="tapContest">
+        <view class="out-circle borderRadius boxModel flexCenter {{isteam ? 'isActive' : ''}}">
+          <view wx:if="{{isteam}}" class="inner-circle borderRadius"></view>
+        </view>
+        <text>团体报名</text>
+      </view> 
+    </view> -->
+    <view class="fix-right flexAlign">
+      <view class="fix-btn flexCenter whiteFont" bindtap="enrollBtn">立即报名</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="enroll-end flexCenter whiteFont">报名已结束</view>
+  </block>
+</view>
+</view>

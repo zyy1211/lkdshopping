@@ -1,0 +1,45 @@
+<view class='con'>
+  <view class='cate '>
+    <view class="pro-nav boxModel">
+      <block wx:for='{{navTitle}}' wx:key='index'>
+        <view class='nav-title textAlign boxModel {{ index == listid ? "whiteBackgound" : "" }}' data-index='{{index}}' bindtap='showList'>
+          {{item.name}}
+        </view>
+      </block>
+    </view>
+    <view class='proLists boxModel whiteBackgound'>
+      <view class='pro-title'>{{'热门推荐'}}</view>
+        <block wx:if='{{isShow}}'>
+          <view class="pro-lists boxModel">
+            <block wx:for='{{navTitle}}' wx:key='idx' wx:for-item='list' wx:for-index='idx' >
+              <block wx:if='{{ listid == idx }}'>
+                <block wx:for='{{list.parentid}}' wx:key='index'>
+                  <view class='pro-list overHide' data-category_id="{{item.id}}" data-category_name="{{list.name}}" bindtap='toProLists'>
+                    <image class='listImg' src='{{static+item.save_path+item.file_name}}' />
+                    <view class='pro-name textAlign'>{{item.name}}</view>
+                  </view>
+                </block>  
+              </block>  
+            </block>
+          </view>
+        </block>  
+        <!-- 暂无数据 -->
+        <block wx:else>
+          <view class='nodata flexCenter'>
+            <image class='nodata-img' src='/images/nodata.png'></image>
+          </view>
+        </block>
+    </view>
+  </view>
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel"><image src="/images/getphone.png" /></view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,49 @@
+<view class='con'>
+  <block wx:if='{{ isShow }}'>
+    <view class='addrLists'>
+        <block wx:for='{{addrList}}' wx:key='index'>
+          <view class='addrList boxModel flexColJustBetween whiteBackgound'>
+            <view class='addrInfo boxModel flexColJustAround'>
+              <view class='name-tel'>
+                <text class='name'>{{item.name}}</text>
+                <text>{{item.phone}}</text>
+              </view>
+              <view class='addrDetail font-color-rgba'>
+                {{item.province_id}} {{item.city_id}} {{item.region_id}} {{item.detail}}
+              </view>
+            </view>
+            <view class='handle borderTopRgba font-color-rgbaTwo'>
+              <view class='default flexAlign'>
+                <view class='defImg boxModel flexCenter {{ defaultId == index ? "isActive" : "" }}' data-address_id='{{item.address_id}}' 
+                data-index='{{index}}' bindtap='defaultTap'>
+                  <block wx:if='{{index == defaultId}}'>
+                    <image src='/images/tick2.png'></image>
+                  </block>
+                </view>
+                <text>默认</text>
+              </view>
+              <view class='default def-right flexAround'>
+                <view class='edit flexAround' data-address_id='{{item.address_id}}'  bindtap='toEditAddress'>
+                  <image src='/images/write.png'></image>
+                  <text>编辑</text>
+                </view>
+                <view class='delete flexAround' data-address_id='{{item.address_id}}' bindtap='deleteAddress' >
+                  <image src='/images/delete.png'></image>
+                  <text>删除</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png'></image>
+    </view>
+  </block>
+  
+  <!-- 底部固定栏 -->
+  <view class='fixed bottomFixed whiteFont flexCenter' data-address_id='{{""}}' bindtap='toEditAddress'>添加新地址</view>
+</view>

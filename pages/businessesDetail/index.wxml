@@ -1,0 +1,112 @@
+<view class='con'>
+  <!-- 商家信息 -->
+  <view class='stadium boxModel flexJustBetw whiteBackgound'>
+    <view class='img-1 boxModel overHide '>
+      <image src='{{user.logo}}' />
+    </view>
+    <!-- 商家名称 -->
+    <view class='name font-color-rgba flexColJustAround'>
+      <view class='name-1'>{{user.store_name}}</view>
+      <view class='name-2'>全部商品 {{user.pnums}}</view>
+      <view class='name-ul'>
+        <view class='name-li'>
+          <image src='/images/star{{user.points >= 1 ? "2" : "1" }}.png' />
+          <image src='/images/star{{user.points >= 2 ? "2" : "1" }}.png' />
+          <image src='/images/star{{user.points >= 3 ? "2" : "1" }}.png' />
+          <image src='/images/star{{user.points >= 4 ? "2" : "1" }}.png' />
+          <image src='/images/star{{user.points >= 5 ? "2" : "1" }}.png' />
+        </view>
+      </view>
+    </view>
+    <!-- 关注度 -->
+    <view class='attention font-color-rgba'>
+      <text>{{user.fans}}人关注</text>
+      <view wx:if='{{user.isFollow}}' class='attention-1 whiteFont isAttention-bg' bindtap="attention">已关注</view>
+      <view wx:else class='attention-1 attention-bg' bindtap="attention">+关注</view>
+    </view>
+  </view>
+  <!-- 预约展示 -->
+  <view class="reserveShow font-color-rgba boxModel whiteBackgound">
+    <view class="product-1 flexBetween" bindtap="toReserveCenter">
+      <text>预约展示</text>
+      <image class="arrow" src="/images/arrow-right.png" />
+    </view>
+    <block wx:if='{{proLists != ""}}'>
+      <block wx:for='{{proLists}}' wx:key='index'>
+        <view class='listContainer flexBetween boxModel whiteBackgound' data-title='{{item.title}}' data-id="{{item.id}}" bindtap='toReserveDetail'>
+          <view class='preImg boxModel'>
+            <image src='{{static + item.img}}' />
+          </view>
+          <view class='place'>
+            <view class='placeName flexAlign font-color-rgbaTwo'>{{item.title}}</view>
+            <view class='starImg flexAlign'>
+              <image src='/images/star{{item.points >= 1 ? 2 : 1}}.png' />
+              <image src='/images/star{{item.points >= 2 ? 2 : 1}}.png' /> 
+              <image src='/images/star{{item.points >= 3 ? 2 : 1}}.png' /> 
+              <image src='/images/star{{item.points >= 4 ? 2 : 1}}.png' /> 
+              <image src='/images/star{{item.points >= 5 ? 2 : 1}}.png' /> 
+          </view>
+            <view class='yd flexAlign'>
+              <block wx:if='{{item.rsortid == "1"}}'>
+                <image src='/images/money.png' />
+                预定<text class='pri'>{{item.price}}</text>元起
+              </block>
+            </view>
+            <view class='bott flexAlign'>
+              <view class='ball flexAlign'>
+                <text>{{item.tags}}</text>
+              </view>
+              <view class='distance flexAlign'>
+                <image src='/images/map.png'></image>
+                <text>{{item.juli}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='noData font-color-rgba flexCenter'>
+        暂无内容
+      </view>
+    </block>
+  </view>
+  <!-- 商品展示 -->
+  <view class='product font-color-rgba boxModel whiteBackgound'>
+    <view class="product-1 flexBetween" bindtap="toCateGory">
+      <text>商品展示</text>
+      <image class="arrow" src="/images/arrow-right.png" />
+    </view>
+    <block wx:if='{{goods != ""}}'>
+      <view class='product-ul boxModel'>
+        <block wx:for='{{goods}}' wx:key='index'>
+          <view class='product-li' data-goods_id="{{item.goods_id}}" bindtap="toProDetail">
+            <view class='img'>
+              <image src='{{static+item.save_path+item.file_name}}' />
+            </view>
+            <view class='product-li-1'>
+              <view class="over overHide">
+                <block wx:if='{{item.type == "1"}}'><text class="pri">[积]</text></block>
+                {{item.goods_name}}
+              </view>
+              <view class='product-li-2 font-color-rgba flexJustBetw'>
+                <view class='product-li-3'>
+                  ￥{{item.goods_price}}
+                </view>
+                <view class='product-li-4 flexAlign'>
+                  <image class='rdImg' src='/images/redu.png' />
+                  热度:{{item.goods_hot}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='noData font-color-rgba flexCenter'>
+        暂无内容
+      </view>
+    </block>
+  </view>
+</view>

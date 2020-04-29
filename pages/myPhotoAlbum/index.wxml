@@ -1,0 +1,72 @@
+<view class='con'>
+  <block wx:if='{{isShow}}'>
+    <block wx:for='{{albumLists}}' wx:key='index'>
+      <view class="dynamicList boxModel whiteBackgound" >
+        <view class="user boxModel flexBetween" data-social_id="{{item.social_id}}" bindtap="toDynamicDetail">
+          <view class="flexAlign">
+            <image class="user-avatar borderRadius" src="{{item.userinfo.avatarurl}}" data-uid="{{item.uid}}" catchtap="toPersonPage" />
+            <text class="nickname">{{item.userinfo.nickname}}</text>
+          </view>
+          <view class="care dele boxModel flexCenter " data-index="{{index}}" data-social_id="{{item.social_id}}" catchtap="dele">
+            删除
+          </view>
+        </view>
+        <view wx:if="{{ item.content != '' }}" class="content boxModel">
+          {{item.content}}
+        </view>
+        <block wx:if="{{ item.stype == 1 }}">
+          <block wx:if="{{ item.lists.length > 1 }}">
+            <view class="imgUrlLists overHide boxModel">
+              <block wx:for='{{item.lists}}' wx:for-item='list' wx:for-index='idx' wx:key='idx'>
+                <image src="{{static+list.links}}" data-index="{{index}}" data-idx="{{idx}}" catchtap="previewImage" />
+              </block>
+            </view>
+          </block>
+          <block wx:if="{{ item.lists.length == 1 }}">
+            <view class="imgUrl boxModel">
+              <image src="{{static+item.lists[0].links}}" data-index="{{index}}" data-idx="0" catchtap="previewImage" />
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{ item.stype == 0 }}" >
+          <view class="videoUrl boxModel">
+            <video
+              id='video{{index}}'
+              data-index='{{index}}'
+              src="{{static+item.lists[0].links}}"
+              show-mute-btn
+              controls
+              show-center-play-btn
+              play-btn-position='center'
+              object-fit='cover'
+              bindplay='videoPlay'
+            >
+            </video>
+          </view>
+        </block> 
+        <view class="date font-color-rgba" data-social_id="{{item.social_id}}" bindtap="toDynamicDetail">
+          <view class="time flexAlign" >
+            <image class="time-img" src="/images/time1.png" />
+            <text>{{item.create_time}}</text>
+          </view>
+          <view class="pl flexAround">
+            <view class="flexCenter">
+              <image class="pl-img" src="/images/write.png" />
+              <text>{{item.cnum}}</text>
+            </view> 
+            <view class="flexCenter" data-social_id="{{item.social_id}}" data-index="{{index}}" catchtap="clickZan">
+              <image class="dz-img" src="/images/zan{{item.isLike ? '2' : '1'}}.png" />
+              <text>{{item.lnum}}</text>
+            </view> 
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

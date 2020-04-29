@@ -1,0 +1,42 @@
+<view class='whiteBackgound'>
+  <!-- 教练头像 -->
+  <view class="coach boxModel whiteBackgound">
+    <view class="coach-avatar">
+      <view class="avatar overHide borderRadius"><image src="{{imgUrl}}" /></view>
+      <view class="click-modify flexCenter" bindtap="upload">点击更改头像</view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class='businesses whiteBackgound boxModel flexColJustAround borderTopRgba'>
+      <view>真实姓名</view>
+      <input type='text' class='input borderBottomRgba' name='name' placeholder-class='placeholder' placeholder='请输入真实姓名' />
+    </view>
+    <view class='businesses whiteBackgound boxModel borderBottomRgba flexColJustAround '>
+      <view>性别</view>
+      <view class="sex-box">
+        <block wx:for='{{sexLists}}' wx:key='index'>
+          <view class='c-male textAlign {{ sex == item ? "isActive" : "" }}' data-sex='{{item}}' bindtap='tapSex'>
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class='businesses whiteBackgound boxModel flexColJustAround '>
+      <view>联系电话</view>
+      <input type='number' class='input borderBottomRgba' name='tel' placeholder-class='placeholder' placeholder='请输入联系电话' />
+    </view>
+    <view class='businesses whiteBackgound boxModel flexColJustAround '>
+      <view>身份证号</view>
+      <input type='text' class='input borderBottomRgba' name='idcode' placeholder-class='placeholder' placeholder='请输入身份证号' />
+    </view>
+    <view class='businesses whiteBackgound boxModel flexColJustAround '>
+      <view>参赛项目</view>
+      <picker class="picker" range="{{array}}" value="{{index}}" bindchange="bindRegionChange">
+        <input type='text' class='input borderBottomRgba' name='item' value="{{array[index]}}" disabled placeholder-class='placeholder' placeholder='请选择参赛项目'/>
+      </picker>
+    </view>
+    
+    <!-- 提交 -->
+    <button class='submit whiteFont' form-type="submit">提  交</button>
+  </form>
+</view>

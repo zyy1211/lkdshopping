@@ -1,0 +1,106 @@
+<!--pages/pay/index.wxml-->
+<view class='con'>
+  <!-- 收货信息 -->
+  <view class="address boxModel flexAlign {{ isBan ? 'ban' : '' }}" bindtap="toAddress">
+    <view class='map-img'>
+      <image src='/images/map2.png' />
+    </view>
+    <block wx:if='{{flag}}'>
+      <view class="user">
+        <view class='userName'>
+          <view class='name'>{{address.name}}</view>
+          <view class='tel'>{{address.phone}}</view>
+        </view>
+        <view class='detailAddr'>{{address.province_name}} {{address.city_name}} {{address.region_name}} {{address.detail}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='user flexAlign'>
+        请先选择收货地址
+      </view>
+    </block>
+    <view class="arrow flexCenter">
+      <image class="arrowImg" src="/images/arrow-right.png"></image>
+    </view>
+  </view>
+  <!-- 商品信息 -->
+  <view class="proLists boxModel">
+    <block wx:for='{{proLists}}' wx:key='index'>
+      <view class='proInfo flexAlign whiteBackgound'>
+        <view class='proImg overHide flexCenter'>
+          <image src='{{static+item.save_path+item.file_name}}' />
+        </view>
+        <view class='pro flexColJust'>
+          <view class='proName boxModel font-color-rgbaTwo'>
+            <block wx:if='{{type == "1"}}'><text class="totalPri">[积]</text></block>
+            {{item.goods_name}}
+          </view>
+          <view class='proSize font-color-rgba boxModel'>{{item.goods_sku.goods_attr}}</view>
+          <view class='total flexJustBetw'>
+            <view wx:if='{{type == "0"}}' class='totalPri'>￥{{item.goods_sku.goods_price}}</view>
+            <view wx:else class='totalPri'>{{item.goods_sku.goods_price}} 积分</view>
+            <view class='totalCount font-color-rgba'>
+              x {{item.total_num}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 其他信息 -->
+  <view class='others boxModel whiteBackgound'>
+    <view class='list flexBetween'>
+      <view class='font-color-rgbaTwo'>商品总数量</view>
+      <view class='price'><text class='font-color-rgba'>x </text>{{order_total_num}}</view>
+    </view>
+    <view class='list flexBetween'>
+      <view wx:if='{{type == "0"}}' class='font-color-rgbaTwo'>商品总金额</view>
+      <view wx:else class='font-color-rgbaTwo'>商品总积分</view>
+      <view class='price'>
+        <block wx:if='{{type == "0"}}'>
+          <text class='font-color-rgba'>￥</text>{{totalPri}}
+        </block>
+        <block wx:else>
+          {{totalPri}}
+        </block>
+      </view>
+    </view>
+    <view class='list flexBetween' wx:if='{{type == "0"}}'>
+      <view class='font-color-rgbaTwo'>运费</view>
+      <view class='price'><text class='font-color-rgba'>￥</text>{{express_price}}</view>
+    </view>
+    <view class='list flexBetween buyer'>
+      <view class='font-color-rgbaTwo'>买家留言</view>
+    </view>
+    <view wx:if='{{isShowText}}' class="textarea whiteBackgound boxModel font-color-rgbaTwo" bindtap="clickText">
+      <block wx:if='{{isHidePlaceholder}}'>
+        {{remark}}
+      </block>
+      <block wx:else>
+        <text class="placeholder">请输入买家留言</text> 
+      </block>
+    </view>
+    <textarea 
+      wx:else
+      class='textarea txt boxModel whiteBackgound font-color-rgbaTwo'
+      adjust-position
+      show-confirm-bar
+      focus
+      value="{{remark}}"
+      placeholder='请输入买家留言' 
+      placeholder-class='placeholder'
+      bindblur='clickTextArea'
+      maxlength="40"
+    ></textarea>
+  </view>
+  <!-- 合计 -->
+  <view class='fix bottomFixed font-color-rgba whiteBackgound'>
+    <view class="sumPri flexCenter">
+      合计： <view wx:if='{{type == "0"}}' class="priColor"> ￥{{payPri}}</view>
+             <view wx:else class="priColor"> {{payPri}} 积分</view>
+    </view>
+    <view class="sumPri flexCenter boxModel">
+      <view class="calculate flexCenter boxModel {{ isBan ? 'ban' : '' }}" bindtap="submitOrder">提交订单</view>
+    </view>
+  </view>
+</view>

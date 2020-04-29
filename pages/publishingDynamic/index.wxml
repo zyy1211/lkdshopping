@@ -1,0 +1,48 @@
+<view class='con'>
+  <textarea
+    placeholder='请输入动态内容  (0~200字)'
+    class="textarea whiteBackgound boxModel font-color-rgbaTh"
+    maxlength="200"
+    bindinput='publish'
+    value="{{val}}"
+  >
+  </textarea>
+  <!-- 选择视频/图片 -->
+  <view class="upload-box whiteBackgound boxModel">
+    <block wx:for='{{imgs}}' wx:key='index'>
+      <view class="img-box boxModel">
+        <image class="img" src="{{item}}"/>
+        <view class="delete borderRadius whiteFont flexCenter" data-dele="photo" data-index="{{index}}" bindtap="delete">X</view>
+      </view>
+    </block>
+    <block wx:for='{{videos}}' wx:key='index'>
+      <view class="img-box boxModel">
+        <video class="img" src="{{item}}"></video>
+        <view class="delete borderRadius whiteFont flexCenter" data-dele="video" bindtap="delete">X</view>
+      </view>
+    </block>
+    <block wx:if='{{ imgs.length < 9 }}'>
+      <view class="img-box boxModel flexCenter" bindtap="modialog">
+        <image class="img" src="/images/upload.png"/>
+      </view>
+      <view class="img-box font-color-rgbaThr flexCenter">请上传0-9张图片</view>
+    </block>
+  </view>
+
+  <!-- 发布 -->
+  <view class="upload-boxs boxModel whiteBackgound flexCenter" >
+    <form bindsubmit="upload" report-submit='true' >
+      <button form-type="submit" disabled="{{isSend}}" class="upload whiteFont flexCenter">发布</button>
+    </form>
+  </view>
+
+  <!-- 遮罩层 -->
+  <view wx:if='{{isModialog}}' class="mask" bindtap="modialog">
+    <view class="fix-box">
+      <view class="fix whiteBackgound flexCenter borderMiddleBottomRgba" bindtap="takeVideo">小视频</view>
+      <view class="fix whiteBackgound flexCenter borderMiddleBottomRgba" data-sourcetype="camera" bindtap="takePhoto">相机</view>
+      <view class="fix whiteBackgound flexCenter" data-sourcetype="album" bindtap="takePhoto">选择图片</view>
+    </view>
+    <view class="fix fix-bott whiteBackgound flexCenter" catchtap="modialog">取消</view>
+  </view>
+</view>

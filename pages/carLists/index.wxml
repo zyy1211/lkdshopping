@@ -1,0 +1,84 @@
+<!--pages/carLists/index.wxml-->
+<view class='con'>
+  <view class='header boxModel whiteBackgound borderTopRgba flexBetween'>
+    <text>操作</text>
+    <text wx:if='{{isShowManage}}' bindtap='showManage'>管理</text>
+    <view wx:else class='manage flexAround'>
+      <view class='ok textAlign' bindtap='showManage'>完成</view>
+      <view class='del textAlign' bindtap='Delete'>删除</view>
+    </view>
+  </view>
+  <!-- 商品列表 -->
+  <block wx:if='{{isShow}}'>
+    <view class="body boxModel">
+      <block wx:for='{{cartList}}' wx:for-item='lists' wx:for-index='idx' wx:key='idx'>
+        <view class='lists whiteBackgound'>
+          <!-- 商店名称 -->
+          <view class="title flexAlign">
+            <view class='radio-check boxModel borderRadius flexCenter {{lists.selected ? "active" : "" }}'
+                data-idx='{{idx}}' bindtap='selcetStroe' >
+              <block wx:if='{{lists.selected}}'>
+                <image src='/images/tick2.png' />
+              </block>    
+            </view>
+            <view class="storeName">{{lists.store_name}}</view>
+          </view>
+          <block wx:for='{{lists.list}}' wx:key='index'>
+            <view class='list boxModel flexBetween' data-store_id="{{lists.store_id}}" data-goods_id="{{item.goods_id}}">
+              <view class='radio-check boxModel borderRadius flexCenter {{item.selected ? "active" : "" }}'
+                data-idx='{{idx}}' data-index="{{index}}" bindtap='radioChecked' >
+                <block wx:if='{{item.selected}}'>
+                  <image src='/images/tick2.png'></image>
+                </block>
+              </view>
+              <view class='proInfo flexAlign whiteBackgound' data-goods_id="{{item.goods_id}}" bindtap="toProDetail">
+                <view class='proImg overHide flexCenter'>
+                  <image src='{{static+item.save_path+item.file_name}}'/>
+                </view>
+                <view class='pro flexColJustCen'>
+                  <view class='proName boxModel font-color-rgbaTwo'>{{item.goods_name}}</view>
+                  <view class='proSize boxModel font-color-rgba'>{{item.goods_attr}}</view>
+                  <view class='total flexBetween'>
+                    <view class='aPri'>￥{{item.goods_price}}</view>
+                    <view class='totalCount font-color-rgba flexAround boxModel'>
+                      <view class='decrease textAlign' catchtap='decrease' data-num="{{item.total_num}}" data-idx="{{idx}}"
+                        data-id="{{item.id}}" data-index='{{index}}' hover-stop-propagation='true'>-</view>
+                      <view>{{item.total_num}}</view>
+                      <view class='increase textAlign' 
+                        catchtap='increase' data-idx="{{idx}}"
+                        data-index="{{index}}" data-goods_info='{{item}}' hover-stop-propagation='true'>+</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>  
+        </view>
+      </block> 
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png'></image>
+    </view>
+  </block>
+  <!-- 底部固定栏 -->
+  <view class="fix bottomFixed whiteBackgound flexAround">
+    <view class="selectAll flexBetween font-color-rgbaTwo" bindtap="selectAll">
+      <view class="radio-check boxModel flexCenter borderRadius {{selectAll ? 'active' : '' }}">
+        <block wx:if='{{selectAll}}'>
+          <image src='/images/tick2.png'></image>
+        </block>
+      </view>
+      <text>全选</text>
+    </view>
+    <view class="sumPri">
+      ¥ {{totalPri}}
+    </view>
+    <view class="cal whiteFont flexCenter" bindtap="cal">
+      <text class="countWidth rigPosition">结算</text> 
+      <text class="countWidth leftPosition">({{totalNum}})</text> 
+    </view>
+  </view>
+</view>

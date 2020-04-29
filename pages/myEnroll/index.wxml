@@ -1,0 +1,41 @@
+<view class="con">
+  <!-- 报名信息 -->
+  <block wx:if='{{isShow}}'>
+    <view class="orderLists">
+      <block wx:for="{{reserveLists}}" wx:key='index'>
+        <view class="order-list whiteBackgound borderBottomRgba">
+          <view class="order-info boxModel" data-signup_id="{{item.signup_id}}" bindtap="toEnrollDetail">
+            <view class="order-img"><image src="{{static+item.img}}" /></view>
+            <view class="info boxModel">
+              <view class="info-title">
+                {{item.title}}
+              </view>
+              <view class="list-date flexBetween font-color-rgba ">
+                开始时间：{{item.start_time}}
+              </view>
+              <view class="list-date flexBetween font-color-rgba ">
+                结束时间：{{item.end_time}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="contest-model boxModel whiteBackgound ">
+          参赛项目：
+          <text class="font-color-rgba">{{item.item_name}}</text>
+        </view>
+        <view class="jion-team boxModel whiteBackgound">
+          参赛选手：
+          <block wx:for="{{item.player}}" wx:for-item="option" wx:key="option">
+            <text class="player-name font-color-rgba">{{option}}  </text>
+          </block>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

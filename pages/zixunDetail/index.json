@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-poster": "/component/poster/index"
+  },
+  "navigationBarTitleText": "资讯详情"
+}

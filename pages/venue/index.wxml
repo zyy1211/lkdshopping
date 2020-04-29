@@ -1,0 +1,38 @@
+<view class="con">
+  <view class='search boxModel flexAlign'>
+    <input type='text'
+      class='input-search boxModel whiteBackgound' 
+      placeholder='请输入场馆关键字' 
+      placeholder-class='placeholder'
+      adjust-position='true'
+      value="{{key}}"
+      confirm-type="search"
+      bindconfirm="searchImg"
+      bindinput="keySearch"
+    />
+    <view class='search-btn flexCenter' bindtap="searchImg"><image class='img-search' src='/images/search.png' /></view>
+  </view>
+  <block wx:if='{{isShow}}'>
+    <view class="list-box boxModel whiteBackgound">
+      <block wx:for='{{lists}}' wx:key='index'>
+        <view class="list boxModel flexBetween borderBottomRgba" data-list="{{item}}" data-index="{{index}}" bindtap="checked">
+          <view class="list-data flexColJustAround">
+            <view class="list-title">{{item.title}}</view>
+            <view class="list-addr font-color-rgbaThr">{{item.raddr}}</view>
+          </view>
+          <view class="radio-check boxModel flexCenter borderRadius {{index == checkIndex ? 'active' : '' }}">
+            <block wx:if='{{index == checkIndex}}'>
+              <image src='/images/tick2.png' />
+            </block> 
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png' />
+    </view>
+  </block>
+</view>

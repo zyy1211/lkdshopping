@@ -1,0 +1,60 @@
+<view class='con'>
+  <view class='navTab topFixed borderBottomRgba whiteBackgound font-color-rgba'>
+    <block wx:for='{{tab}}' wx:key='index'>
+      <view class='nav-title textAlign {{currIndex == index ? "isActive" : "" }}' data-index='{{index}}' bindtap='tap'>{{item}}</view>
+    </block>
+  </view>
+  <!-- 商品信息 -->
+  <block wx:if='{{isShow}}'>
+    <view class='proLists'>
+      <block wx:for='{{proLists}}' wx:key='index'>
+        <view class='proInfo boxModel whiteBackgound' >
+          <view class="pro-title flexBetween">
+            <view class="font-color-rgba">商品列表</view>
+            <view class="pro-state">{{item.status.text}}</view>
+          </view>
+          <view class="pro-order flexBetween font-color-rgba">
+            <view class="font-color-rgba">订单号：{{item.order_no}}</view>
+            <view class="order-time">{{item.status.time}}</view>
+          </view>
+          <view class="pro-img-count boxModel borderTopRgba borderBottomRgba flexBetween font-color-rgba" 
+          data-order_id="{{item.order_id}}" bindtap="toOrderDetail">
+            <view class="pro-imgBox boxModel overHide font-color-rgba">
+              <block wx:for='{{item.goods}}' wx:for-item='imgItem' wx:for-index='imgIndex' wx:key='imgIndex'>
+                <image class="pro-img" src="{{static+imgItem.save_path+imgItem.file_name}}" />
+              </block>
+            </view>
+            <view>共 {{item.total_num}} 件</view>
+          </view>
+          <view class="finally flexBetween font-color-rgba">
+            <view wx:if='{{item.type == "1"}}'>合计： <text class="totalPri">{{item.pay_price}} 积分</text></view>
+            <view wx:else>合计： <text class="totalPri">¥ {{item.pay_price}}</text></view>
+            <view wx:if='{{item.status.value}}' class="isPay flexBetween">
+              <view class="boxModel border-width cancle flexCenter" data-order_id="{{item.order_id}}" bindtap="cancleOrder">取消</view>     
+              <view wx:if='{{item.type == "1"}}' class="boxModel border-width confirm flexCenter" data-order="{{item}}" bindtap="exchange">兑换</view>          
+              <view wx:else class="boxModel border-width confirm flexCenter" data-order="{{item}}" bindtap="pay">付款</view>          
+            </view>
+            <view wx:elif='{{item.status.receipt}}' class="logistics-info flexBetween">
+              <view class="confirm-receive boxModel flexCenter" 
+                data-order_no="{{item.order_no}}" 
+                data-order_id="{{item.order_id}}" 
+                data-express_company="{{item.express_company}}" 
+                bindtap="toSeeLogistics"
+              >查看物流</view>
+              <view class="confirm-receive boxModel flexCenter" data-order_id="{{item.order_id}}" bindtap="received">确认收货</view>
+            </view>
+            <view wx:elif='{{item.status.delete}}' data-order_id="{{item.order_id}}" data-index="{{index}}" class="confirm-receive boxModel flexCenter" bindtap="deleOrder">
+              删除订单
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 暂无数据 -->
+  <block wx:else>
+    <view class='nodata flexCenter'>
+      <image class='nodata-img' src='/images/nodata.png'></image>
+    </view>
+  </block>
+</view>

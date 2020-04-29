@@ -1,0 +1,21 @@
+<view class="con">
+  <view class="enroll-box boxModel">
+    <block wx:if='{{dataLists != ""}}'>
+      <block wx:for='{{dataLists}}' wx:key='index'>
+        <view class="list flexAlign boxModel font-color-rgba whiteBackgound">
+          <view class="list-img boxModel borderRadius overHide"><image src="{{item.avatarurl}}" /></view>
+          <view class="list-name flexColJustAround">
+            <view>{{item.nickname}}</view>
+            <view class="list-item">{{item.name}}</view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <!-- 暂无数据 -->
+    <block wx:else>
+      <view class='nodata flexCenter'>
+        <image class='nodata-img' src='/images/nodata.png' />
+      </view>
+    </block>
+  </view>
+</view>

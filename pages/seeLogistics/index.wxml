@@ -1,0 +1,32 @@
+<view class='con'>
+  <view class="logistics-box boxModel flexColJustAround whiteBackgound">
+    <view class="flexAlign">
+      物流公司：  <text class="color_second">{{express_company}}</text>
+    </view>
+    <view class="flexAlign">
+      物流单号：  <text class="color_second">{{order_no}}</text>
+    </view>
+  </view>
+
+  <view class="logistics-box logistics-title flexAlign whiteBackgound">物流信息</view>
+  <!-- 追踪 -->
+  <view wx:if='{{hasData}}'>
+    <view class='logisit whiteBackgound boxModel' wx:for="{{lists}}" wx:key="index" >    
+      <!-- 左边子容器 -->
+      <!-- 显示顶部收的圆点 -->
+      <view class='express-middle-axis'  >             
+        <view class='dot-closing_two borderRadius' wx:if="{{index == 0}}"></view>
+        <view class='dot-closing boxModel borderRadius flexCenter' wx:else>></view>
+        <view class='online-top-closing' wx:if="{{index != 0}}"></view>
+      </view>
+      <!-- 右边子容器 -->
+      <view class='express-right'>
+        <view class='express-status-address {{index == 0 ? "color" : "color_second"}}'>{{item.content}}</view>
+        <view class='express-statusing {{index == 0 ? "color" : "color_second"}}'>{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='buttom flexCenter color_second whiteBackgound' wx:else>暂时没有物流信息,请稍后再来~</view>
+  <!-- 请求失败模态框 -->
+  <modal title="友情提示" hidden="{{modalHidden}}" confirm-text="确定" no-cancel='true' bindconfirm="confirm">网络错误，加载失败</modal>
+</view>

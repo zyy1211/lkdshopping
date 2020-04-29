@@ -1,0 +1,104 @@
+<view class="con">
+  <view class="dynamicList borderMiddleTopRgba boxModel whiteBackgound">
+    <view class="user boxModel flexBetween">
+      <view class="user-left-box flexAlign">
+        <image class="user-avatar borderRadius" src="{{dynamicLists.userinfo.avatarurl}}" bindtap="toPersonPage" />
+        <view class="user-sex boxModel">
+          <block wx:if='{{dynamicLists.userinfo.gender == "2"}}'><image src="/images/female.png" /></block>
+          <block wx:elif='{{dynamicLists.userinfo.gender == "1"}}'><image src="/images/male.png" /></block>
+        </view>
+        <view class="name-time flexColJustAround">
+          <text>{{dynamicLists.userinfo.nickname}}</text>
+        </view>
+      </view>
+      <view class="care boxModel flexCenter {{dynamicLists.isFollow ? 'iscare-bg' : 'care-bg' }}" bindtap="care">
+        {{ dynamicLists.isFollow ? '已关注' : '+关注' }}
+      </view>
+    </view>
+    <view class="time-zan flexBetween borderMiddleBottomRgba">
+      <text class="font-color-rgba">{{dynamicLists.create_time}}</text>
+      <view class="zan-box boxModel font-color-rgbaThr flexCenter" bindtap="clickZan">
+        <image src="/images/zan{{dynamicLists.isLike ? '2' : '1'}}.png" /> 
+        <text> {{dynamicLists.lnum}}</text>
+      </view>
+    </view>
+    <view wx:if="{{ dynamicLists.content != '' }}" class="content boxModel">
+      {{dynamicLists.content}}
+    </view>
+    <block wx:if="{{ dynamicLists.stype == 1 }}">
+      <block wx:if="{{ dynamicLists.lists.length > 1 }}">
+        <view class="imgUrlLists boxModel">
+          <block wx:for='{{dynamicLists.lists}}' wx:for-item='list' wx:for-index='idx' wx:key='idx'>
+            <image src="{{https+list.links}}" data-idx="{{idx}}" bindtap="previewImage" />
+          </block>
+        </view>
+      </block>
+      <block wx:if="{{ dynamicLists.lists.length == 1 }}">
+        <view class="imgUrl boxModel">
+          <image src="{{https+dynamicLists.lists[0].links}}" data-idx="0" bindtap="previewImage" />
+        </view>
+      </block>
+    </block>
+    <block wx:if="{{ dynamicLists.stype == 0 }}" >
+      <view class="videoUrl boxModel">
+        <video
+          controls
+          object-fit='cover'
+          src="{{https+dynamicLists.lists[0].links}}"
+          show-mute-btn
+          show-center-play-btn
+          play-btn-position='center'
+        >
+        </video>
+      </view>
+    </block> 
+  </view>
+
+  <view class="comment-box boxModel whiteBackgound">
+    <view class="title boxModel borderMiddleBottomRgba flexAlign">
+      <view class="title-comment font-color-rgba flexCenter">评论 {{dynamicLists.cnum}}</view>
+      <!-- 回到首页(分享的时候显示) -->
+      <image wx:if="{{isshare}}" bindtap='backHome' class='d-back-home' src='/images/homeIcon.png'/>
+      <!-- 分享功能 -->
+      <button class='shareBtn whiteBackgound boxModel flexCenter' open-type='share'>分享</button>
+    </view>
+
+    <!-- 评论 -->
+    <block wx:if='{{commentLists.length != 0}}'>
+      <view class="comment boxModel">
+        <block wx:for='{{commentLists}}' wx:key='index'>
+          <view class="user boxModel flexBetween">
+            <view class="flexAlign">
+              <image class="user-avatar borderRadius" src="{{item.avatarurl}}" bindtap="toPersonPage" />
+              <text class="nick-name">{{item.nickname}}</text>
+            </view>
+            <view class="boxModel font-color-rgba flexCenter">
+              {{ item.time }}
+            </view>
+          </view>
+          <view class="content boxModel">
+            {{item.content}}
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='pl-empty textAlign whiteBackgound'>
+        暂无评论
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部固定栏 / 写评论 -->
+  <view class='fix bottomFixed flexAlign whiteBackgound'>
+    <image class='write' src='/images/write.png'></image>
+    <input class='input boxModel'
+      placeholder='写评论' 
+      maxlength='200' 
+      placeholder-class='placeholder' 
+      bindinput='inputChange'
+      value='{{val}}' 
+    />
+    <image class='send' src='/images/publish.png' bindtap='send' />
+  </view>
+</view>

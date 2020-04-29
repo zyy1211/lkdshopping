@@ -1,0 +1,24 @@
+.hxm{
+  width: 750rpx;
+  font-size: 33rpx;
+  padding-top: 60px;
+}
+.number{
+  width: 750rpx;
+}
+.num{
+  width: 100rpx;
+  height: 60rpx;
+}
+.explain{
+  width: 750rpx;
+  padding-top: 30px;
+  font-size: 28rpx;
+}
+.qr-code{
+  width: 750rpx;
+}
+.qr-img{
+  width: 400rpx;
+  height: 400rpx;
+}

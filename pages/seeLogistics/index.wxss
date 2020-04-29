@@ -1,0 +1,89 @@
+/* pages/seeLogistics/index.wxss */
+.logistics-box{
+  width: 100%;
+  height: 140rpx;
+  font-size: 30rpx;
+  padding: 10rpx 30rpx;
+}
+.logistics-title{
+  margin-top: 25rpx;
+  height: 60rpx;
+  margin-bottom: 1rpx;
+}
+
+/* 追踪 */
+.logisit{
+  width: 100%;
+  display: flex;
+  padding: 30rpx;
+}
+.express-middle-axis {
+  width: 48rpx;
+  position: relative;
+  top: -218rpx;
+  left: -1rpx;
+}
+.express-status-address{
+  font-size: 28rpx;
+  color: #666;
+}
+.express-statusing{
+  font-size: 22rpx;
+  color: #999
+}
+ 
+.online-top-closing {
+  width: 1rpx;
+  height: 180rpx;
+  background: #d7d7d7;
+  position:absolute;
+  top:40rpx;
+  left:21rpx;
+ 
+}
+.color{
+  color: #000;
+  font-weight: bold;
+}
+.color_second{
+  color: #999;
+}
+ 
+.dot-closing {
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 50rpx;
+  font-size: 24rpx;
+  border:1rpx  solid #d7d7d7;
+  color:#d7d7d7;
+  position:absolute;
+  top:175rpx;
+  left:4rpx;
+ 
+}
+.dot-closing_two {
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 50rpx;
+  border:1rpx  solid #000;
+  background: #000;
+  position:absolute;
+  top:175rpx;
+  left:4rpx;
+}
+.express-right {
+  width:90%;
+  height: 170rpx;
+  color: #666;  
+  margin-left: 20rpx;
+  margin-right: 40rpx;
+}
+.buttom{
+  width: 100%;
+  height: 400rpx;
+  font-size: 30rpx;
+}
+
+.mask{
+  top: 0;
+}

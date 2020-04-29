@@ -1,0 +1,55 @@
+.orderLists{
+  width: 750rpx;
+}
+.order-list{
+  width: 100%;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.order-info{
+  width: 100%;
+  padding: 30rpx;
+  display: flex;
+}
+.order-img{
+  width: 240rpx;
+  height: 189rpx;
+}
+.order-img image{
+  width: 240rpx;
+  height: 189rpx;
+}
+.info{
+  padding-left: 20rpx;
+}
+.info-title{
+  width: 100%;
+  height: 100rpx;
+  font-size: 33rpx;
+}
+.list-date{
+  margin-top: 10rpx; 
+  font-size: 28rpx;
+}
+.contest-model{
+  width: 100%;
+  padding: 10rpx 30rpx;
+  font-size: 28rpx;
+}
+.jion-team{
+  width: 100%;
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+}
+.player-name{
+  margin-right: 10rpx;
+}
+
+/* 暂无数据 */
+.nodata{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}

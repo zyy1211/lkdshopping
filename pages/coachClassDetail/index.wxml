@@ -1,0 +1,52 @@
+<view class='con'>
+  <!-- 教练信息 -->
+  <view class="coach boxModel whiteBackgound">
+    <view class="coach-title flexAlign borderBottomRgba">教练信息</view>
+    <view class="coach-info font-color-rgba flexBetween">
+      <view class="com flexAlign">
+        <image class="coach-img borderRadius" src="{{coach.avatarurl}}" />
+        <text>{{coach.nickname}}</text>
+      </view>
+      <view class="com flexAlign">累计授课人次：{{coach.lesson_num}}</view>
+    </view>
+  </view>
+  <!-- 课程信息 -->
+  <view class="coach boxModel whiteBackgound">
+    <view class="coach-title flexAlign borderBottomRgba">课程信息</view>
+    <view class="coach-info font-color-rgba flexAlign">
+      <view class="name-order flexColJustAround">
+        <text>上课时间：{{dataInfo.years}}/{{dataInfo.dates}} {{dataInfo.times}} {{dataInfo.weeks}}</text>
+        <text>上课场馆：{{coach.title}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 学员信息 -->
+  <view class="stu-lists boxModel whiteBackgound">
+    <view class="coach-title flexAlign borderBottomRgba">学员信息</view>
+    <block wx:for='{{students}}' wx:key='index'>
+      <view class="coach-info boxModel font-color-rgba flexBetween">
+        <view class="com flexAlign">
+          <image class="coach-img borderRadius" src="{{item.avatarurl}}" />
+          <view class="name-order flexColJustAround">
+            <text>{{item.nickname}}</text>
+            <text class="font">订单号：{{item.order_no}}</text>
+          </view>
+        </view>
+        <view class="com flexAlign">
+          <view wx:if="{{item.status == 0}}" class="confirm bg-color flexCenter whiteFont" data-index="{{index}}" bindtap="confirm">
+            确认上课
+          </view>
+          <view wx:elif="{{item.status == 1}}" class="confirm bg-gary flexCenter whiteFont">已上课</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 已完成上课 -->
+  <view wx:if='{{end_info.status == 0}}' class="complete whiteBackgound font-color-rgba flexColAroCenter">
+    <view class="flexCenter">
+      <icon class="icon" type="success" size="25" />
+      <text>课程已结束</text>
+    </view>
+    <view class="flexCenter">时间：{{end_info.end_time}}</view>
+  </view>
+</view>

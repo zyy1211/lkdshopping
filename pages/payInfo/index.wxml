@@ -1,0 +1,17 @@
+<view class="con whiteBackgound">
+  <view class="info-box font-color-rgba borderRgba">
+    <view class="title textAlign">{{info.title}}</view>
+    <view class="title textAlign">订单编号：{{info.order_no}}</view>
+    <view class="title textAlign">{{info.time}}</view>
+    <view class="title textAlign">{{info.price}}  元</view>
+    <view class="title textAlign">收款方：{{info.gathering}}</view>
+  </view>
+
+  <view class="info-box">
+    <view class="pay-method flexCenter">
+      <view class="out-circle borderRadius boxModel flexCenter"><view class="inner-circle borderRadius"></view></view>
+      <text>微信支付</text>
+    </view>
+    <view class="pay-btn whiteFont flexCenter" bindtap="pay">立即支付</view>
+  </view>
+</view>

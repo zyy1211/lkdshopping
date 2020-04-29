@@ -1,0 +1,150 @@
+
+.dynamicList{
+  width: 100%;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+.user{
+  width: 100%;
+  height: 120rpx;
+}
+.user-avatar{
+  width: 90rpx;
+  height: 90rpx;
+}
+.user-left-box{
+  height: 100%;
+}
+.user-sex{
+  width: 33rpx;
+  height: 80%;
+  margin-left: -20rpx;
+}
+.user-sex image{
+  width: 25rpx;
+  height: 25rpx;
+}
+.name-time{
+  height: 100rpx;
+}
+.care{
+  width: 120rpx;
+  height: 52rpx;
+  border-radius: 30rpx;
+}
+.care-bg{
+  border:1rpx solid #3CBDF9;
+  color: #3CBDF9;
+}
+.iscare-bg{
+  background: #3CBDF9;
+  color: #fff;
+}
+.content{
+  width: 100%;
+  padding: 25rpx 0;
+}
+.imgUrl,.videoUrl{
+  width: 100%;
+  padding:20rpx 0;
+}
+.imgUrl{
+  height: 500rpx;
+}
+.imgUrlLists{
+  width: 100%;
+  padding: 20rpx 0;
+}
+.imgUrlLists image{
+  width: 223rpx;
+  height: 180rpx;
+  margin-right: 12rpx;
+}
+.imgUrlLists image:nth-child(3n+0){
+  margin-right: 0;
+}
+.videoUrl{
+  height: 450rpx;
+  vertical-align: middle;
+}
+.imgUrl image,.videoUrl video{
+  width: 100%;
+  height: 100%;
+}
+.pl-empty{
+  width:100%;
+  height: 300rpx;
+  line-height: 300rpx;
+  font-size:24rpx;
+}
+.comment-box{
+  width: 100%;
+  font-size: 28rpx;
+  padding-bottom: 100rpx;
+}
+.title{
+  width: 100%;
+  height: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+}
+.title-comment{
+  width: 100rpx;
+  height: 100%;
+}
+.title-comment{
+  margin-left: 30rpx;
+}
+.time-zan{
+  width: 100%;
+  height: 80rpx;
+}
+.zan-box{
+  width: 60rpx;
+  height: 100%;
+}
+.zan-box image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.comment{
+  padding: 20rpx 30rpx;
+}
+.nick-name{
+  margin-left: 10rpx;
+}
+.comment-content{
+  padding: 20rpx 0 20rpx 120rpx;
+}
+.fix{
+  width:750rpx;
+  height:98rpx;
+  box-shadow:0rpx 0rpx 7rpx 0rpx rgba(0, 0, 0, 0.18);
+}
+.write{
+  width: 38rpx;
+  height: 37rpx;
+  position: relative;
+  left:65rpx;
+}
+.send{
+  width: 61rpx;
+  height: 61rpx;
+  margin-left:20rpx;
+}
+.input{
+  width:607rpx;
+  height:60rpx;
+  font-size:26rpx;
+  margin-left:-7rpx;
+  padding-left:100rpx;
+  background:rgba(238,242,245,1);
+  border-radius:30rpx;
+}
+.placeholder{
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}

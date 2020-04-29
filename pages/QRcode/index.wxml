@@ -1,0 +1,12 @@
+<view class="con">
+  <view class="hxm flexCenter boxModel whiteBackgound">核销码</view>
+  <view class="number boxModel whiteBackgound flexCenter">
+    <view class="num flexCenter">{{left}}</view>
+    <view class="num flexCenter">{{mid}}</view>
+    <view class="num flexCenter">{{right}}</view>
+  </view>
+  <view class="explain flexCenter whiteBackgound font-color-rgba">将二维码展示给商家</view>
+  <view class="qr-code boxModel flexCenter whiteBackgound">
+    <image class="qr-img" src="{{base64ImgUrl}}" />
+  </view>
+</view>

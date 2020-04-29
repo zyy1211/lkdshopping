@@ -1,0 +1,140 @@
+<view class='con'>
+  <!-- 轮播图 -->
+  <swiper class="swiper-image" bindchange="currentIndex">
+    <block wx:for="{{imgUrls}}" wx:key='index'>
+      <swiper-item>
+        <image src="{{static+item.save_path+item.file_name}}" data-index='{{index}}' bindtap='previewImage'/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 显示页码 -->
+  <view class='shadow whiteFont boxModel textAlign'>
+    <text class='shadow-currPage'>{{currIndex}}</text>
+    <text class='blod'>/</text>
+    <text class='shadow-totalPage'>{{imgUrls.length}}</text>
+  </view>
+  <!-- 奥维斯运动馆 -->
+  <view class='relateInfo boxModel whiteBackgound'>
+    <view class='name flexBetween'>
+      <view class='name-txt'>{{title}}</view>
+      <!-- 回到首页(分享的时候显示) -->
+      <image wx:if="{{isshare}}" bindtap='backHome' class='d-back-home' src='/images/homeIcon.png'/>
+      <!-- 分享功能 -->
+      <button class='shareBtn whiteBackgound boxModel flexCenter' bindtap='tapmMask'>分享</button>
+    </view>
+
+    <!-- 引用组件 -->
+    <my-poster id="getPoster" avater="{{info.share.img}}" codeimg="{{info.share.rcode}}" price="{{canvasPrice}}" param="1" addr="{{info.raddr}}" tel="{{info.rtel}}" productname="{{title}}"></my-poster>
+
+    <!-- 遮罩层 -->
+    <block wx:if='{{isFlag}}'>
+      <view class='market topFixed' catchtap='tapmMask'>
+        <view class='share bottomFixed'>
+          <button class='btn flexCenter' catchtap='createPoster' >生成海报</button>
+          <button class='btn margin-top flexCenter' open-type='share' >转发</button>
+          <button class='btn flexCenter' catchtap='tapmMask' >取消</button>
+        </view>
+      </view>
+    </block>
+
+    <view class='store font-color-rgbaTwo boxModel flexAlign' data-store_id="{{info.store.store_id}}" bindtap='toBusinessesDetail'>
+      <view class='store-img flexCenter'><image src='/images/home3.png' /></view>
+      <text>栎平体育</text>
+      <view class='name-start flexAlign'>
+        <image src='/images/star{{info.points >= 1 ? "2" : "1" }}.png' class='star-img' />
+        <image src='/images/star{{info.points >= 2 ? "2" : "1" }}.png' class='star-img' />
+        <image src='/images/star{{info.points >= 3 ? "2" : "1" }}.png' class='star-img' />
+        <image src='/images/star{{info.points >= 4 ? "2" : "1" }}.png' class='star-img' />
+        <image src='/images/star{{info.points >= 5 ? "2" : "1" }}.png' class='star-img' />
+      </view>
+    </view>
+    <view class='address font-color-rgbaTwo flexAlign' bindtap='getLocation'>
+      <view class='addr-img flexCenter'><image src='/images/map2.png' /></view>
+      <text>{{info.raddr}}</text>
+    </view>
+    <view class='tel font-color-rgbaTwo flexAlign' flexAlign bindtap='callTel'>
+      <view class='tel-img flexCenter'><image src='/images/tel1.png' /></view>
+      <text>{{info.rtel}}</text>
+    </view>
+    <view class='tip font-color-rgbaTwo flexAlign'>
+      <view class='tip-img flexCenter'><image src='/images/tip1.png' /></view>
+      <text>温馨提示</text>
+    </view>
+    <view class='tip-txt'>{{info.notices}}</view>
+  </view>
+  <!-- 时间段选择 -->
+  <block wx:if="{{options != ''}}">
+    <view class='timeSelect font-color-rgbaTwo whiteBackgound'>
+      <view class='timeSelect-time flexAlign boxModel font-color-rgbaTwo'>
+        <block wx:for='{{options}}' wx:key='index'>
+          <view class="optionBall boxModel flexCenter {{ index == idx ? 'isSelect' : '' }}" data-idx="{{index}}" bindtap="sportsOptions">
+            {{item}}
+          </view>
+        </block>
+      </view>
+      <swiper 
+        class='timeSelect-selected '  
+        next-margin='60rpx' 
+        display-multiple-items='5' 
+      >
+        <block wx:for='{{slider}}' wx:key='index'>
+          <swiper-item class='flexAround'>
+            <view class='slider flexColumnCenter whiteFont' data-week="{{item.week_value}}" data-index="{{index}}" bindtap='selectChange' >       
+              <text>{{item.week}}</text>
+              <text>{{item.date}}</text>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </block>
+  <!-- 上课时间 -->
+  <view class='detailIntro font-color-rgbaTwo boxModel whiteBackgound' wx:if='{{info.rsortid == "2" || info.rsortid == "4"}}'>
+    <view class='detailIntro-title flexBetween'>
+      <text>上课时间</text>
+    </view>
+    <block wx:for='{{info.classres}}' wx:key='index'>
+      <view class='detailIntro-content font-color-rgba flexBetween'>
+        <text>{{item.class_date}}</text>
+        <view class="color" wx:if="{{info.rsortid == '2'}}">￥{{ item.money }}</view> 
+        <view wx:if='{{info.rsortid == "4"}}' class="reservePay flexCenter whiteFont" data-class_id="{{item.class_id}}" data-class_date="{{item.class_date}}" bindtap="modialog">免费预约</view>
+        <view wx:if='{{info.rsortid == "2"}}' class="reservePay flexCenter whiteFont" data-index="{{index}}" bindtap="toReseveOrder">立即预约</view>
+      </view>
+    </block>
+  </view>
+  <!-- 详细介绍 -->
+  <view class='detailIntro font-color-rgbaTwo boxModel whiteBackgound'>
+    <view class='detailIntro-title'>详细介绍</view>
+    <view class='detailIntro-detail boxModel font-color-rgba'>{{info.detail}}</view>
+  </view>
+  <!-- 模态框 -->
+  <block wx:if='{{isModialog}}'>
+    <view class="mask">
+      <view class="modialog bottomFixed boxModel whiteBackgound">
+        <view class="modialog-select flexBetween">
+          <view>请选择上课时间</view>
+          <view class="modialog-close textAlign font-color-rgba" bindtap="closeModialog">
+            <image class="close" src="/images/cancel.png" />
+          </view>
+        </view>
+        <view class="gyk">{{info.title}}</view>
+        <view class="gyk">上课时间： {{class_date}}</view>
+        <view class="reserveBtn flexCenter whiteFont" catchtap="reserveBtn">预约</view>
+      </view>
+    </view>
+  </block>
+  <!-- 获取手机号模态框 -->
+  <block wx:if='{{telModialog}}'>
+    <view class="mask flexCenter">
+      <view class="tel-modialog overHide whiteBackgound">
+        <view class="tel-get-img boxModel">
+          <image class="tel-bg" src="/images/getphone.png" />
+          <image class="tel-close-modialog" src="/images/cancel.png" bindtap="closeTelModia" />
+        </view>
+        <view class="tel-welcome-title textAlign">欢迎来到栎刻动小程序</view>
+        <view class="tel-bind-notice font-color-rgbaThr textAlign">为保证您的订单、权益等信息同步，请绑定手机号</view>
+        <button class="tel-get-phone flexCenter whiteFont" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取手机号</button>
+      </view>
+    </view>
+  </block>
+</view>

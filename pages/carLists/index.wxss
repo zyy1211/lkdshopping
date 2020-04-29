@@ -1,0 +1,151 @@
+.header{
+  width:750rpx;
+  height: 90rpx;
+  padding: 0 70rpx;
+  font-size: 28rpx;
+}
+.manage{
+  width: 40%;
+  height: 100%;
+}
+.ok,.del{
+  width:90rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  border:1rpx solid rgba(153,153,153,1);
+  border-radius: 20rpx;
+}
+.del{
+  border-color:rgba(219,33,33,1);
+  color: rgba(219,33,33,1);
+}
+/* 暂无数据 */
+.nodata{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left:0;
+  top: 100rpx;
+  z-index: 99;
+}
+.body{
+  margin-top:20rpx;
+}
+.lists{
+  width:750rpx;
+  margin-bottom: 20rpx;
+}
+.title{
+  width:100%;
+  height: 80rpx;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-left: 30rpx;
+}
+.storeName{
+  margin-left: 20rpx;
+}
+.list{
+  width:100%;
+  height: 260rpx;
+  padding: 0rpx 30rpx;
+}
+.radio-check{
+  width:  40rpx;
+  height: 40rpx;
+  border: 1rpx solid rgba(153,153,153,1);
+}
+.radio-check image{
+  width: 65%;
+  height: 65%;
+}
+.active{
+  background:#51ABFF;
+  border:0;
+}
+.proInfo{
+  width:650rpx;
+  height:100%;
+  border-radius:20rpx;
+}
+.proImg{
+  width:207rpx;
+  height:207rpx;
+  margin-left:20rpx;
+  border-radius:10rpx;
+}
+.proImg image{
+  width:100%;
+  height: 100%;
+}
+.pro{
+  width:400rpx;
+  height: 100%;
+  margin-left:27rpx;
+}
+.proName{
+  margin-top: 30rpx;
+  font-size:28rpx;
+}
+.proSize{
+  font-size:26rpx;
+  padding-top: 10rpx;
+}
+.total{
+  margin-top: 25rpx;
+}
+.aPri{
+  font-size:28rpx;
+  color:rgba(219,33,33,1);
+}
+.totalCount{
+  width:160rpx;
+  height:48rpx;
+  font-size:28rpx;
+  border:1rpx solid rgba(153,153,153,1);
+  border-radius:24rpx;
+}
+.increase{
+  width: 40rpx;
+  height: 100%;
+  color:rgba(48,155,255,1);
+  transform: scale(1.2);
+}
+.decrease{
+  width: 40rpx;
+  height: 100%;
+  color:rgba(187,187,187,1);
+  transform: scale(1.5);
+}
+.fix{
+  width:100%;
+  height: 100rpx;
+}
+.selectAll{
+  width: 115rpx;
+  font-size:30rpx;
+}
+.sumPri{
+  width: 250rpx;
+  color: rgba(219,33,33,1);
+  font-size: 30rpx;
+}
+.cal{
+  width:200rpx;
+  height:70rpx;
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+  box-shadow:0rpx 0rpx 14rpx 0rpx rgba(71,191,252,0.36);
+  border-radius:35rpx;
+  font-size:28rpx;
+}
+.countWidth{
+  width:50%;
+}
+.rigPosition{
+  text-align: right;
+}
+.leftPosition{
+  text-align: left;
+}

@@ -1,0 +1,116 @@
+.container{
+  width:750rpx;
+}
+.header{
+  width:100%;
+  font-size: 32rpx;
+  padding: 30rpx 25rpx;
+  border-bottom: 1rpx solid rgba(229,229,229,1);
+  border-top:  1rpx solid rgba(229,229,229,1);
+}
+.header-date{
+  width:100%;
+  padding-top: 30rpx;
+}
+.com{
+  font-size: 26rpx;
+}
+.timeImg{
+  width:30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+.eyes{
+  width:38rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+.sign-up{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.bg{
+  width: 100%;
+  height: 100rpx;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; */
+}
+.absolute-box{
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.signUp{
+  width: 180rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  border: 1rpx solid rgba(153,153,153,1);
+  
+}
+
+.body{
+  width:700rpx;
+  margin:30rpx auto;
+}
+.content{
+  text-align: left;
+  margin-top:20rpx;
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+}
+.rich-img{
+  width: 100% ;
+  height: auto ;
+}
+.recommend{
+  margin: 25rpx;
+  font-size:30rpx;
+  font-family:MicrosoftYaHeiLight;
+  font-weight:bold;
+  color:rgba(47,46,45,1);
+}
+.zixun{
+  width:750rpx;
+  font-size: 24rpx;
+}
+.list{
+  width:750rpx;
+  height: 250rpx;
+  padding:30rpx 25rpx;
+  display: flex;
+  border-top: 1rpx solid rgba(229,229,229,1);
+}
+.left-img{
+  width:300rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}
+.left-img image{
+  width:100%;
+  height: 100%;
+}
+.right-con{
+  width:420rpx;
+  margin-left:30rpx;
+}
+.title{
+  width:100%;
+  font-size: 28rpx;
+}
+.sport{
+  width:100%;
+}
+.bott{
+  width:100%;
+}
+.no-data{
+  width: 100%;
+  padding: 25rpx ;
+}

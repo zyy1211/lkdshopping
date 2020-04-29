@@ -1,0 +1,41 @@
+<view class="con boxModel">
+  <view class="person-box whiteBackgound boxModel">
+    <view class="avatar borderBottomRgba flexBetween">
+      <view class="bold">更改头像</view>
+      <view class="avatar-img borderRadius overHide" bindtap="changeAvatar"><image src="{{avatarUrl}}" /></view>
+    </view>
+    <view class="nick-name borderBottomRgba flexBetween">
+      <view class="bold">昵称</view>
+      <view class="name flexBetween">
+        <input class="input" value="{{nickName}}" bindinput='inputVal' />
+        <image class="arrow-img" src="/images/arrow-right.png" />
+      </view>
+    </view>
+    <view class="phone flexBetween borderBottomRgba">
+      <view class="bold">手机号码</view>
+      <block wx:if='{{ !isClick }}'>
+        <button class="btn whiteFont" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击获取</button>
+      </block>
+      <block wx:else>
+        <view>{{ phone }}</view>
+      </block>
+    </view>
+    <view class="sex flexBetween borderBottomRgba">
+      <view class="bold">性别</view>
+      <view class="sex-box flexAround">
+        <view class="gender flexCenter {{gender == '1' ? 'isActive' : ''}}" data-gender="1" bindtap="checkSex">男</view>
+        <view class="gender flexCenter {{gender == '2' ? 'isActive' : ''}}" data-gender="2" bindtap="checkSex">女</view>
+      </view>
+    </view>
+    <view class="city flexBetween borderBottomRgba">
+      <view class="bold">所在城市</view>
+      <view class=" flexBetween">
+        <picker class="picker overHide" mode='region' bindchange="bindRegionChange">
+          {{region[0]}}  {{region[1]}}
+          <image class="arrow-img" src="/images/arrow-right.png" />
+        </picker>
+      </view>
+    </view>
+    <view class="submit flexCenter whiteFont" bindtap="submit">保存修改</view>
+  </view>
+</view>

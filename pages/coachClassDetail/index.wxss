@@ -1,0 +1,54 @@
+/* pages/coachClassDetail/index.wxss */
+.coach,.stu-lists{
+  width: 100%;
+  height: 200rpx;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.coach-title{
+  width: 100%;
+  height: 60rpx;
+}
+.coach-info{
+  width: 100%;
+  height: 150rpx;
+}
+.com{
+  height: 100%;
+}
+.coach-img{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+.stu-lists{
+  height: auto;
+}
+.font{
+  font-size: 24rpx;
+}
+.name-order{
+  height: 70%;
+}
+.confirm{
+  width: 160rpx;
+  height: 44rpx;
+  font-size: 24rpx;
+  border-radius: 22rpx;
+}
+.bg-color{
+  background:linear-gradient(90deg,rgba(56,219,248,1),rgba(81,171,255,1));
+}
+.bg-gary{
+  background: rgba(0,0,0,0.5);
+}
+.complete{
+  width: 100%;
+  height: 160rpx;
+  font-size: 26rpx;
+  padding-top: 85rpx;
+}
+.icon{
+  margin-right: 15rpx;
+}

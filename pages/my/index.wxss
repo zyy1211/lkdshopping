@@ -1,0 +1,220 @@
+.header{
+  width:100%;
+  height: 400rpx;
+  background:#4ea9f2;
+  background-size: 750rpx 528rpx;
+  margin:0 auto;
+}
+.bj{
+  width:749rpx;
+  height: 400rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.h-top{
+  padding:38rpx 30rpx 0;
+  display: flex;
+  width:100%;
+}
+.avator{
+  width:125rpx;
+  height: 125rpx;
+  z-index: 9;
+}
+.avator image{
+  width: 100%;
+  height: 100%;
+}
+.userName{
+  width:490rpx;
+  height: 50rpx;
+  text-align: left;
+  line-height: 50rpx;
+  margin:15rpx 0;
+  background:transparent;
+  font-size:32rpx;
+  letter-spacing: 2rpx;
+}
+.userName::after{
+  border:none;
+}
+.set{
+  width: 70rpx;
+  height: 70rpx;
+}
+.set-img{
+  width: 32rpx;
+  height: 33rpx;
+  z-index: 9;
+}
+.h-bott{
+  width: 700rpx;
+  margin:45rpx auto;
+  display: flex;
+}
+.shouC,.xiaoX{
+  width:50%;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 9;
+}
+.shouC text,.xiaoX text{
+  width:100%;
+  text-align: center;
+  color:rgba(246,246,246,1);
+  font-size:30rpx;
+}
+.order{
+  width:700rpx;
+  height: 284rpx;
+  margin: -177rpx auto -100rpx ;
+  box-shadow:0rpx 0rpx 20rpx 0rpx rgba(69,69,69,0.2);
+  border-radius:15rpx;
+}
+.allOrder,.qianbao{
+  width: 90%;
+  height: 103rpx;
+  margin:0 25rpx;
+  border-bottom: 1rpx solid rgba(229,229,229,1);
+}
+.my-order,.my-pack{
+  font-size:34rpx;
+  color:rgba(38,38,38,1);
+}
+.my-all{
+  margin-left:336rpx;
+  font-size:26rpx;
+  color:rgba(153,153,153,1);
+}
+.seeAll,.com-arrow{
+  width:15rpx;
+  height: 25rpx;
+  margin-left:30rpx;
+}
+.ul{
+  width:100%;
+  height: 120rpx;
+  margin-top:38rpx;
+  display: flex;
+  color:rgba(106,106,106,1);
+  font-size:24rpx;
+}
+.li{
+  width:25%;
+  height: 100%;
+}
+.li-img{
+  width:65rpx;
+  height: 60rpx;
+}
+.pack{
+  width:700rpx;
+  height:284rpx;
+  border-radius:15rpx;
+  margin:0 auto;
+  margin-top:141rpx;
+}
+.business{
+  margin-top:40rpx;
+}
+.me{
+  width:100%;
+  height: 180rpx;
+}
+.yuE,.jiFen{
+  width:50%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size:36rpx;
+  font-weight:800;
+}
+.yj{
+  width:100%;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(106,106,106,1);
+}
+.myPicture{
+  width: 700rpx;
+  margin: 40rpx 25rpx;
+  border-radius: 20rpx;
+}
+.bott-half{
+  width:700rpx;
+  margin:40rpx 25rpx;
+  padding: 0 0 30rpx;
+  border-radius:20rpx;
+}
+.com{
+  width: 90%;
+  height: 103rpx;
+  margin:0 25rpx;
+  border-bottom: 1rpx solid rgba(229,229,229,1);
+}
+.borderWidth{
+  border: 0;
+}
+.com-img{
+  width:  45rpx;
+  height: 45rpx;
+}
+.com text{
+  font-size:28rpx;
+  margin-left:-332rpx;
+}
+.store{
+  width:636rpx;
+  height:202rpx;
+  box-shadow:0rpx 0rpx 14rpx 0rpx rgba(125,125,125,0.2);
+  border-radius:15rpx;
+  margin:30rpx auto;
+}
+.store image{
+  width:185rpx;
+  height: 124rpx;
+}
+.ruzhu{
+  width:270rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  border:1rpx solid rgba(56,219,248,1);
+  border-radius:35rpx;
+  font-size:28rpx;
+  color:rgba(56,219,248,1);
+}
+.yes{
+  background:rgba(56,219,248,1);
+  color: #fff;
+}
+
+/* 客服图片 */
+.contact{
+  right: 30rpx;
+  bottom: 306rpx;
+  z-index: 1000;
+  position: fixed;
+  border-radius: 8rpx;
+  background: rgba(255,255,255,0);
+  font-size: 24rpx;
+}
+.contac-btn{
+  width: 60rpx;
+  height: 60rpx;
+  padding: 0;
+  background: rgba(255,255,255,0);
+}
+.contact-text{
+  width: 60rpx;
+  height: 80rpx;
+}
+.contac-btn::after{
+  border: none;
+}
+.contac-btn image{
+  width:  100%;
+  height: 100%;
+}

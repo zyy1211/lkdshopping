@@ -1,0 +1,67 @@
+<view class='con font-color-rgba'>
+  <!-- 项目信息 -->
+  <view wx:if="{{signup.type == '1'}}" class="item whiteBackgound boxModel"><text class="weight">队名：</text>{{signup.teamname}}</view>
+  <view wx:if="{{signup.type == '1'}}" class="item whiteBackgound boxModel"><text class="weight">组别：</text>{{signup.group_name}}组</view>
+  <view wx:if="{{signup.type == '1'}}" class="item flexAlign whiteBackgound boxModel borderBottomRgba">
+    <text class="weight">参赛项目：</text>
+    <block wx:for="{{signup.item}}" wx:key="index"> 
+      {{item}} 
+    </block>
+  </view>
+  <view wx:else class="item weight whiteBackgound boxModel borderBottomRgba">参赛项目：</view>
+  <view wx:if="{{signup.type == '0'}}" class="item whiteBackgound boxModel" wx:for="{{signup.item}}" wx:key="index">
+    {{item}}
+  </view>
+  <!-- 报名人员 -->
+  <view class="enrolless-box">
+    <view class="item weight flexAlign whiteBackgound boxModel borderBottomRgba">参赛选手</view>
+    <block wx:for='{{enrollessLists}}' wx:for-item='option' wx:for-index='idx' wx:key='idx'>
+      <view class="enrolless boxModel whiteBackgound">
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">选手姓名：</view>
+          <input class="input-name boxModel" disabled='true' type="text" value="{{option.name}}" />
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">手机号：</view>
+          <input class="input-name boxModel" disabled='true' type="text" value="{{option.phone}}" />
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">性别：</view>
+          <view class="gender flexAround" >
+            <text>{{option.gender}}</text>
+            <view class="gender-box overHide isActive flexCenter borderRadius">
+              <image src="/images/checkbox1.png" />
+            </view>
+          </view>
+          <text class="weight">服装尺寸：</text>
+          <view class="input-selected flexBetween boxModel">
+            {{option.clothing_size}}
+          </view>
+        </view>
+        <view class="wid-hei flexAlign">
+          <view class="name-text boxModel">身份证号：</view>
+          <input class="input-name boxModel" disabled='true' type="text" value="{{option.sfz_code}}" />
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 账单信息 -->
+  <view class="bill boxModel whiteBackgound flexJustBetw">
+    <view class="bill-info flexAlign">参赛费用： {{signup.pay_price}}元</view>
+    <view wx:if="{{signup.pay_status == '10'}}" class="bill-pay-box flexBetween">
+      <view class="flexColumnCenter">未支付</view>
+      <view class="bill-pay-btn whiteFont boxModel flexCenter" bindtap='topay'>立即支付</view>
+    </view>
+    <view wx:else class='bill-pay-box flexCenter'>
+      已支付
+    </view>
+  </view>
+  <!-- 立刻报名 -->
+  <view class="signUp-box boxModel flexAlign whiteBackgound">
+    <view class="signUp whiteFont flexCenter" bindtap="updateData">修改参赛选手信息</view>
+    <view wx:if="{{signup.qiandao == '1'}}" class="signUp bg-gray whiteFont flexCenter">已签到</view>
+    <view wx:else class="signUp whiteFont flexCenter" bindtap="signIn">现场签到</view>
+  </view>
+  <view class="date boxModel whiteBackgound">注：报名截止日期之前可以修改</view>
+  <view class="date boxModel whiteBackgound">报名截止日期：{{active.end_time}}</view>
+</view>

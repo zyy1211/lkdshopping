@@ -1,0 +1,112 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/activityEnroll/index",
+    "pages/modifyInfo/index",
+    "pages/signIn/index",
+    "pages/enrollDetail/index",
+    "pages/myEnroll/index",
+    "pages/becomeCoach/index",
+    "pages/payInfo/index",
+    "pages/singleEnroll/index",
+    "pages/teamEnroll/index",
+    "pages/seeLogistics/index",
+    "pages/coachClassDetail/index",
+    "pages/reserveClass/index",
+    "pages/signUp/index",
+    "pages/venue/index",
+    "pages/enter/index",
+    "pages/coach/index",
+    "pages/personCenter/index",
+    "pages/personPage/index",
+    "pages/pointsRecord/index",
+    "pages/sign/index",
+    "pages/deliveryAddress/index",
+    "pages/QRcode/index",
+    "pages/enroll/index",
+    "pages/makeQR/index",
+    "pages/allBalls/index",
+    "pages/search/index",
+    "pages/myPhotoAlbum/index",
+    "pages/businessesDetail/index",
+    "pages/reserveEvaluation/index",
+    "pages/publishingDynamic/index",
+    "pages/dynamicDetail/index",
+    "pages/areaDetail/index",
+    "pages/reserveOrder/index",
+    "pages/myReserve/index",
+    "pages/videoLists/index",
+    "pages/commodityEvaluation/index",
+    "pages/productLists/index",
+    "pages/addAddress/index",
+    "pages/record/index",
+    "pages/order/index",
+    "pages/orderDeatil/index",
+    "pages/my/index",
+    "pages/pay/index",
+    "pages/carLists/index",
+    "pages/productDetail/index",
+    "pages/cateGory/index",
+    "pages/becomeBusinesses/index",
+    "pages/zixunCenter/index",
+    "pages/zixunDetail/index",
+    "pages/reserveCenter/index",
+    "pages/timeSelect/index",
+    "pages/reserveDetail/index",
+    "pages/reserve/index",
+    "pages/login/index",
+    "pages/videoDetail/index",
+    "pages/webview/webview"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#47befc",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "images/home2.png",
+        "iconPath": "images/home1.png"
+      },
+      {
+        "pagePath": "pages/reserve/index",
+        "text": "预约",
+        "selectedIconPath": "images/reserve2.png",
+        "iconPath": "images/reserve1.png"
+      },
+      {
+        "pagePath": "pages/videoLists/index",
+        "text": "发现",
+        "selectedIconPath": "images/found2.png",
+        "iconPath": "images/found1.png"
+      },
+      {
+        "pagePath": "pages/cateGory/index",
+        "text": "商城",
+        "selectedIconPath": "images/market2.png",
+        "iconPath": "images/market1.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "selectedIconPath": "images/my2.png",
+        "iconPath": "images/my1.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "栎刻动",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 8000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "即将获取你的位置信息"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,18 @@
+<view class="con">
+  <view class="item title textAlign whiteBackgound boxModel">{{lists.title}}</view>
+  <view class="item whiteBackgound boxModel">参赛项目:</view>
+  <view class="item whiteBackgound boxModel" wx:for="{{lists.item}}" wx:key="index">
+    {{item}}
+  </view>
+  <view class="item padding-top whiteBackgound boxModel">参赛选手:</view>
+  <view class="item whiteBackgound borderBottomRgba boxModel">
+    <block wx:for="{{lists.player}}" wx:key="index">
+      {{item}}  
+    </block>
+  </view>
+
+  <view class="signIn-box flexCenter whiteBackgound">
+    <view wx:if="{{ !isflag }}" class="signIn-btn whiteFont flexCenter" bindtap="btn">立即签到</view>
+    <view wx:else class="signIn-btn bg whiteFont flexCenter">已签到</view>
+  </view>
+</view>

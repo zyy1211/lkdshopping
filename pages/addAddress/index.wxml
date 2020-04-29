@@ -1,0 +1,49 @@
+<view class='con'>
+  <form bindsubmit="confirm" >
+    <view class='c-info boxModel whiteBackgound'>
+      <view class='connect  borderBottomRgba'>
+        <view class='c'>联系人</view>
+        <view class='c-person-info sm font-color-rgba'>
+          <view class='c-name flexAlign borderBottomRgba'>
+            <input type='text' value='{{userName}}' name='userName' placeholder='姓名'></input>
+          </view>
+          <view class='c-sex'>
+            <block wx:for='{{sexLists}}' wx:key='index'>
+              <view class='c-male textAlign {{ sex == item ? "isActive" : "" }}' data-sex='{{item}}' bindtap='tapSex'>
+                {{item}}
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view class='tel boxModel borderBottomRgba'>
+        <view class='c'>电话</view>
+        <input type='number' class='input' value='{{tel}}' maxlength='11' name='tel' placeholder='手机号码'></input>
+      </view>
+      <view class='tel flexBetween boxModel borderBottomRgba'>
+        <view class='c'>地址</view>
+        <picker class='picker' mode="region" value="{{region}}" bindchange="bindRegionChange">
+          <input type='text' value='{{region}}' name='region' disabled placeholder='选择省、市、区'></input>
+        </picker>
+        <view class='img flexCenter'>
+          <image src='/images/arrow-right.png'></image>
+        </view>
+      </view>
+      <view class='tel flexBetween boxModel '>
+        <view class='c'>补充说明</view>
+        <input type='text' class='in' name='detail' value='{{detail}}' placeholder='详细地址（例如门牌号等）'></input>
+      </view>
+      <view class='dz'>
+        <view class='c'></view>
+        <view class='c-home sm c-person-info boxModel borderTopRgba'>
+          <block wx:for='{{dzLists}}' wx:key='index'>
+            <view class='c-female textAlign font-color-rgba {{ tags == item ? "isActive" : "" }}' data-tags='{{item}}' bindtap='tapDz'>
+              {{item}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <button class='btn' form-type='submit'>确定</button>
+    </view>
+  </form>
+</view>

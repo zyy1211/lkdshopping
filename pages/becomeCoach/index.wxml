@@ -1,0 +1,77 @@
+<view class='whiteBackgound'>
+  <block wx:if='{{zt == "1"}}'>
+    <!-- 教练头像 -->
+    <view class="coach boxModel whiteBackgound">
+      <view class="coach-avatar">
+        <view class="avatar overHide borderRadius" data-type="1" bindtap="upload"><image src="{{imgUrl}}" /></view>
+        <view class="click-modify flexCenter">点击更改头像</view>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit='true'>
+      <view class='businesses whiteBackgound boxModel flexColJustAround borderTopRgba'>
+        <view>真实姓名</view>
+        <input type='text' class='input borderBottomRgba' name='name' value="{{nickName}}" placeholder-class='placeholder' placeholder='请输入真实姓名' />
+      </view>
+      <view class='businesses whiteBackgound boxModel borderBottomRgba flexColJustAround '>
+        <view>性别</view>
+        <view class="sex-box">
+          <block wx:for='{{sexLists}}' wx:key='index'>
+            <view class='c-male textAlign {{ sex == item ? "isActive" : "" }}' data-sex='{{item}}' bindtap='tapSex'>
+              {{item}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view>联系电话</view>
+        <view class="relative flexBetween">
+          <input type='number' class='input borderBottomRgba' name='tel' value="{{phone}}" disabled="true" placeholder-class='placeholder' placeholder='请输入联系电话' />
+          <button class="btn whiteFont" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击获取</button>
+        </view>
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view class="relative flexJustBetw">
+          <view>所属场馆</view>
+          <button class="btn btn-top whiteFont" size="mini" bindtap="toVenue">点击查看</button>
+        </view>
+        <input type='number' class='input borderBottomRgba' value="{{data.title}}" disabled placeholder-class='placeholder' placeholder='请选择场馆' />
+      </view>
+      <view class='businesses whiteBackgound boxModel flexColJustAround '>
+        <view>身份证号</view>
+        <input type='text' class='input borderBottomRgba' name='idcode' value="{{sfz_code}}" placeholder-class='placeholder' placeholder='请输入身份证号' />
+      </view>
+      <view class="photo font-color-rgba boxModel flexCenter" data-type="2" bindtap="upload">
+        <view wx:if='{{front}}' class="photo-box flexCenter">身份证正面或反面</view>
+        <view wx:else class="photo-box boxModel"><image src="{{frontImg}}" /></view>
+      </view>
+      <view class="photo font-color-rgba boxModel flexCenter" data-type="3" bindtap="upload">
+        <view wx:if='{{back}}' class="photo-box flexCenter">身份证正面或反面</view>
+        <view wx:else class="photo-box boxModel"><image src="{{backImg}}" /></view>
+      </view>
+      <!-- 提交 -->
+      <button class='submit whiteFont' form-type="submit">提  交</button>
+    </form>
+  </block>
+  <block wx:else>
+    <!-- 审核 -->
+    <view class="examine boxModel">
+      <view wx:if='{{status.value == 0}}' class="examine-result flexCenter">
+        <icon type="success" size='30'/>
+      </view>
+      <view wx:elif='{{status.value == 3}}' class="examine-result flexCenter">
+        <icon type="warn" size='30'/>
+      </view>
+      <view wx:elif='{{status.value == 4}}' class="examine-result flexCenter">
+        <icon type="cancel" size='30'/>
+      </view>
+      <view class="examine-result flexCenter">{{status.text}}</view>
+      <view class="font" wx:if='{{status.value == 4}}'>
+        <view class="weight flexCenter">失败原因：</view>
+        <view class="note flexCenter">{{status.note}}</view>
+      </view>
+    </view>
+    <view class="flexCenter" wx:if='{{status.value == 4}}'>
+      <view class="submit whiteFont flexCenter" bindtap="resub">重新提交</view>
+    </view>
+  </block>
+</view>
