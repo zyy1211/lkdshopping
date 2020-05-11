@@ -87,6 +87,12 @@ Page({
       url: '../cateGory/index'
     })
   },
+  // toScList2:function(){
+  //   app.globalData.bannerUrl = "1";
+  //   wx.switchTab({
+  //     url: '../cateGory/index'
+  //   })
+  // },
 
   //跳转到商品详情
   toProDetail: function (e) {

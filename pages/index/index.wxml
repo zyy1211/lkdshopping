@@ -14,8 +14,11 @@
   <!-- banner广告 -->
   <!-- bindchange='swiperChange' -->
   <swiper class='banner' bindtap="toScList" autoplay="{{autoplay}}" circular="true" current='0' >
-    <swiper-item class='flexColumnCenter'>
+    <swiper-item class='flexColumnCenter' >
       <image src="../../images/banner.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
+    </swiper-item>
+        <swiper-item class='flexColumnCenter'>
+      <image src="../../images/banner2.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
     </swiper-item>
     <!-- <block wx:for="{{bannerSrc}}" wx:key="index" wx:if="{{sales_initial == 1}}">
     <swiper-item  class='flexColumnCenter'>
