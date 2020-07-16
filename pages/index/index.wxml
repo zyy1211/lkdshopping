@@ -1,26 +1,30 @@
 <!-- 容器 -->
 <view class="con">
-  <!-- 顶部搜索框 -->
-  <view class='search boxModel flexAlign'>
-    <view class='img-search flexAlign'>
-      <image src='/images/search.png' />
-    </view>
-    <input type='text' class='input-search boxModel whiteBackgound' disabled placeholder='搜索场馆，课程，私教'
-      placeholder-class='placeholder' bindtap="toSearch" />
-    <image class='schedule' src='/images/schedule.png' bindtap='sign' />
-  </view>
-  <!-- 阴影图片 -->
-  <!-- <view class='shadow'></view> -->
-  <!-- banner广告 -->
-  <!-- bindchange='swiperChange' -->
-  <swiper class='banner' bindtap="toScList" autoplay="{{autoplay}}" circular="true" current='0' >
-    <swiper-item class='flexColumnCenter' >
-      <image src="../../images/banner.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
-    </swiper-item>
-        <swiper-item class='flexColumnCenter'>
-      <image src="../../images/banner2.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
-    </swiper-item>
-    <!-- <block wx:for="{{bannerSrc}}" wx:key="index" wx:if="{{sales_initial == 1}}">
+	<!-- 顶部搜索框 -->
+	<view class='search boxModel flexAlign'>
+		<view class='img-search flexAlign'>
+			<image src='/images/search.png' />
+		</view>
+		<input type='text' class='input-search boxModel whiteBackgound' disabled placeholder='搜索场馆，课程，私教' placeholder-class='placeholder' bindtap="toSearch" />
+		<image class='schedule' src='/images/schedule.png' bindtap='sign' />
+	</view>
+	<!-- 阴影图片 -->
+	<!-- <view class='shadow'></view> -->
+	<!-- banner广告 -->
+	<!-- bindchange='swiperChange' -->
+
+	<swiper class='banner' bindtap="toScList" autoplay="{{autoplay}}" circular="true" current='0'>
+		<swiper-item class='flexColumnCenter'>
+			<image src="../../images/b1.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
+		</swiper-item>
+		<swiper-item class='flexColumnCenter'>
+			<image src="../../images/banner.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
+		</swiper-item>
+		<swiper-item class='flexColumnCenter'>
+			<image src="../../images/banner2.png" class='swiper-img {{swiperIndex == index ? "active" : ""}}' />
+		</swiper-item>
+
+		<!-- <block wx:for="{{bannerSrc}}" wx:key="index" wx:if="{{sales_initial == 1}}">
     <swiper-item  class='flexColumnCenter'>
       <image src="{{item}}" class='swiper-img {{swiperIndex == index ? "active" : ""}}' data-url="{{bannerTo[index]}}" bindtap="bannerUrl"/>
     </swiper-item>
@@ -30,105 +34,103 @@
       <image src="{{item}}" class='swiper-img {{swiperIndex == index ? "active" : ""}}' data-url="{{bannerCode[index]}}" bindtap="previewImage"/>
     </swiper-item>
   </block> -->
-  </swiper>
+	</swiper>
 
-  <!-- 运动项目 -->
-  <view class='detail boxModel flexAlign whiteBackgound'>
-    <block wx:for='{{lists}}' wx:key='index'>
-      <view class='list flexColumnCenter' data-id='{{item.id}}' data-catename='{{item.catename}}'
-        bindtap='toReserveCenter'>
-        <image class='icon' src='{{static+item.img}}' />
-        <view class='sportName font-color-rgbaTwo'>{{item.catename}}</view>
-      </view>
-    </block>
-  </view>
+	<!-- 运动项目 -->
+	<view class='detail boxModel flexAlign whiteBackgound'>
+		<block wx:for='{{lists}}' wx:key='index'>
+			<view class='list flexColumnCenter' data-id='{{item.id}}' data-catename='{{item.catename}}' bindtap='toReserveCenter'>
+				<image class='icon' src='{{static+item.img}}' />
+				<view class='sportName font-color-rgbaTwo'>{{item.catename}}</view>
+			</view>
+		</block>
+	</view>
 
-  <!-- 资讯 -->
-  <view class='zixun font-color-rgbaTwo flexAlign whiteBackgound'>
-    <view class='zG-left textAlign' catchtap='toZXcenter'>
-      <text>资讯</text>
-      <view class='t-img boxModel whiteFont flexCenter'>公告</view>
-    </view>
-    <image src='/images/tiao.png' class='zG-img' />
-    <swiper class='zG-right' vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='2'>
-      <block wx:for='{{msg}}' wx:key='index'>
-        <swiper-item class='swiper-item' data-id='{{item.id}}' catchtap='toZXdetail'>
-          <text>{{item.title}}</text>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
+	<!-- 资讯 -->
+	<view class='zixun font-color-rgbaTwo flexAlign whiteBackgound'>
+		<view class='zG-left textAlign' catchtap='toZXcenter'>
+			<text>资讯</text>
+			<view class='t-img boxModel whiteFont flexCenter'>公告</view>
+		</view>
+		<image src='/images/tiao.png' class='zG-img' />
+		<swiper class='zG-right' vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='2'>
+			<block wx:for='{{msg}}' wx:key='index'>
+				<swiper-item class='swiper-item' data-id='{{item.id}}' catchtap='toZXdetail'>
+					<text>{{item.title}}</text>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
 
-  <!-- 场馆预约 -->
-  <view class='reserve whiteBackgound'>
-    <view class='intro'>
-      <image class='leftTop' src='/images/leftTop.png' />
-      <text>场馆预约</text>
-      <view class='arrow flexCenter' data-catename='全部' data-id="" catchtap='toReserveCenter'>
-        <image class='arrow-right' src='/images/arrow-right.png' />
-      </view>
-    </view>
-    <block wx:for='{{dete}}' wx:key='index'>
-      <view class='dete boxModel flexJustBetw' data-title='{{item.title}}' data-id="{{item.id}}"
-        bindtap='toReserveDetail'>
-        <view class='dete-img'>
-          <image src='{{static+item.img}}' class='img' />
-        </view>
-        <view class='dete-intro'>
-          <view class='dete-name font-color-rgbaTwo'>{{item.title}}</view>
-          <view class='img-star'>
-            <image class='star' src='/images/star{{item.points >= 1 ? 2 : 1}}.png' />
-            <image class='star' src='/images/star{{item.points >= 2 ? 2 : 1}}.png' />
-            <image class='star' src='/images/star{{item.points >= 3 ? 2 : 1}}.png' />
-            <image class='star' src='/images/star{{item.points >= 4 ? 2 : 1}}.png' />
-            <image class='star' src='/images/star{{item.points >= 5 ? 2 : 1}}.png' />
-          </view>
-          <view class="yd font-color-rgbaThr flexAlign">
-            <image class='rmb' src='/images/money.png' />
-            预定<text style='color:orange;font-size:26rpx'> {{item.price}}</text>元起
-          </view>
-          <view class='yuding flexBetween font-color-rgba'>
-            <view class='com flexAlign'>
-              <text> {{item.tags}} </text>
-            </view>
-            <view class='com flexAlign map font-color-rgba'>
-              <image src='/images/map.png' />
-              <text> {{item.juli}}</text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
-  <!-- 品牌商城 -->
-  <view class='device whiteBackgound'>
-    <view class='intro'>
-      <image class='leftTop' src='/images/leftTop.png' />
-      <text>品牌商城</text>
-      <view class='arrow flexCenter' catchtap='toCateGory'>
-        <image class='arrow-right' src='/images/arrow-right.png' />
-      </view>
-    </view>
-    <view class="goods {{isXModel ? 'goodsXModel' : ''}}">
-      <block wx:for='{{proLists}}' wx:key='index'>
-        <view class='goods-intro boxModel' data-goods_id="{{item.goods_id}}" bindtap='toProDetail'>
-          <view class='goods-img'>
-            <image class='qc-img' src='{{static+item.save_path+item.file_name}}' />
-          </view>
-          <view class='goods-name overHide font-color-rgbaTwo'>
-            <block wx:if='{{item.type == "1"}}'><text class="ji-color">[积]</text></block>
-            {{item.goods_name}}
-          </view>
-          <view class='pri flexJustBetw'>
-            <view wx:if='{{item.type == "1"}}' class='left'>{{item.goods_price}}积分</view>
-            <view wx:else class='left'>￥{{item.goods_price}}</view>
-            <view class='right flexAlign font-color-rgba'>
-              <image class='rdImg' src='/images/redu.png' />
-              热度: {{item.goods_hot}}
-            </view>
-          </view>
-        </view>
-      </block>
-    </view>
-  </view>
+	<!-- 场馆预约 -->
+	<view class='reserve whiteBackgound'>
+		<view class='intro'>
+			<image class='leftTop' src='/images/leftTop.png' />
+			<text>场馆预约</text>
+			<view class='arrow flexCenter' data-catename='全部' data-id="" catchtap='toReserveCenter'>
+				<image class='arrow-right' src='/images/arrow-right.png' />
+			</view>
+		</view>
+		<block wx:for='{{dete}}' wx:key='index'>
+			<view class='dete boxModel flexJustBetw' data-title='{{item.title}}' data-id="{{item.id}}" bindtap='toReserveDetail'>
+				<view class='dete-img'>
+					<image src='{{static+item.img}}' class='img' />
+				</view>
+				<view class='dete-intro'>
+					<view class='dete-name font-color-rgbaTwo'>{{item.title}}</view>
+					<view class='img-star'>
+						<image class='star' src='/images/star{{item.points >= 1 ? 2 : 1}}.png' />
+						<image class='star' src='/images/star{{item.points >= 2 ? 2 : 1}}.png' />
+						<image class='star' src='/images/star{{item.points >= 3 ? 2 : 1}}.png' />
+						<image class='star' src='/images/star{{item.points >= 4 ? 2 : 1}}.png' />
+						<image class='star' src='/images/star{{item.points >= 5 ? 2 : 1}}.png' />
+					</view>
+					<view class="yd font-color-rgbaThr flexAlign">
+						<image class='rmb' src='/images/money.png' />
+						预定<text style='color:orange;font-size:26rpx'> {{item.price}}</text>元起
+					</view>
+					<view class='yuding flexBetween font-color-rgba'>
+						<view class='com flexAlign'>
+							<text> {{item.tags}} </text>
+						</view>
+						<view class='com flexAlign map font-color-rgba'>
+							<image src='/images/map.png' />
+							<text> {{item.juli}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<!-- 品牌商城 -->
+	<view class='device whiteBackgound'>
+		<view class='intro'>
+			<image class='leftTop' src='/images/leftTop.png' />
+			<text>品牌商城</text>
+			<view class='arrow flexCenter' catchtap='toCateGory'>
+				<image class='arrow-right' src='/images/arrow-right.png' />
+			</view>
+		</view>
+		<view class="goods {{isXModel ? 'goodsXModel' : ''}}">
+			<block wx:for='{{proLists}}' wx:key='index'>
+				<view class='goods-intro boxModel' data-goods_id="{{item.goods_id}}" bindtap='toProDetail'>
+					<view class='goods-img'>
+						<image class='qc-img' src='{{static+item.save_path+item.file_name}}' />
+					</view>
+					<view class='goods-name overHide font-color-rgbaTwo'>
+						<block wx:if='{{item.type == "1"}}'><text class="ji-color">[积]</text></block>
+						{{item.goods_name}}
+					</view>
+					<view class='pri flexJustBetw'>
+						<view wx:if='{{item.type == "1"}}' class='left'>{{item.goods_price}}积分</view>
+						<view wx:else class='left'>￥{{item.goods_price}}</view>
+						<view class='right flexAlign font-color-rgba'>
+							<image class='rdImg' src='/images/redu.png' />
+							热度: {{item.goods_hot}}
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
 </view>
